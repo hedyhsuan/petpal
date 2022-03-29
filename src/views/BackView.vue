@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 import BackNavBar from '@/components/BackNavBar'
 
 export default {

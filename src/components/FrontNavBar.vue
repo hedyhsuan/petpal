@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <div class="container">
       <router-link class="navbar-brand" to="/">PetPal</router-link>
       <button
@@ -46,7 +46,7 @@
         </ul>
       </div>
 
-      <div class="cart dropdown " style="cursor:pointer;">
+      <div class="cart dropdown" style="cursor: pointer">
         <div
           class=""
           id="cartDropdown"
@@ -76,19 +76,27 @@
             <span class="d-none d-md-block">購物車</span>
           </div>
         </div>
-        <div class="dropdown-menu" aria-labelledby="cartDropdown">
+        <div class="dropdown-content" aria-labelledby="cartDropdown">
           <div>
-            <div class="cart-header py-4 d-flex flex-column align-items-center border-bottom-2">
-              <p class="fs-4 fw-bold text-primaryDark letter-md-spacing border-primary">購物車</p>
+            <div
+              class="cart-header py-4 d-flex flex-column align-items-center border-bottom-2"
+            >
+              <p
+                class="fs-4 fw-bold text-primaryDark letter-md-spacing border-primary"
+              >
+                購物車
+              </p>
             </div>
-            <div class="cart-body overflow-auto h-100 p-2" style="max-height:70vh">
-               <ul class="h-100">
-                 <li class="d-flex align-items-center w-100">
-                   <div>3294u1jeiqodw</div>
-                 </li>
-               </ul>
+            <div
+              class="cart-body overflow-auto h-100 p-2"
+              style="max-height: 70vh"
+            >
+              <ul class="h-100">
+                <li class="d-flex align-items-center w-100">
+                  <div>3294u1jeiqodw</div>
+                </li>
+              </ul>
             </div>
-
           </div>
         </div>
 
@@ -198,5 +206,23 @@ svg{ }
 <style scoped>
 .cart {
   color: rgba(0, 0, 0, 0.55);
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 </style>
