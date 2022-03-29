@@ -56,35 +56,33 @@
             </div> -->
           </div>
 
-          <v-form
+          <Form
             ref="form"
             class="col-md-6"
             v-slot="{ errors }"
-            @submit="placeOrder"
+            @submit="createOrder"
           >
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <v-field
+              <Field
                 id="email"
                 name="email"
                 type="email"
                 class="form-control"
                 :class="{ 'is-invalid': errors['email'] }"
-                rules="email|required"
                 placeholder="請輸入 Email"
+                rules="email|required"
                 v-model="form.user.email"
-              ></v-field>
-              <error-message
+              ></Field>
+              <ErrorMessage
                 name="email"
                 class="invalid-feedback"
-              ></error-message>
+              ></ErrorMessage>
             </div>
-            <!-- name 為必填，是錯誤驗證的回饋欄位 -->
-            <!-- :class 可運用 v-form 帶入的驗證錯誤作為判斷 -->
 
             <div class="mb-3">
               <label for="name" class="form-label">收件人姓名</label>
-              <v-field
+              <Field
                 id="name"
                 name="姓名"
                 type="text"
@@ -93,35 +91,28 @@
                 placeholder="請輸入姓名"
                 rules="required"
                 v-model="form.user.name"
-              ></v-field>
-
-              <error-message
-                name="姓名"
-                class="invalid-feedback"
-              ></error-message>
+              ></Field>
+              <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
             </div>
 
             <div class="mb-3">
               <label for="tel" class="form-label">收件人電話</label>
-              <v-field
+              <Field
                 id="tel"
                 name="電話"
-                type="tel"
+                type="text"
                 class="form-control"
                 :class="{ 'is-invalid': errors['電話'] }"
                 placeholder="請輸入電話"
                 rules="numeric|required|min:8|max:10"
                 v-model="form.user.tel"
-              ></v-field>
-              <error-message
-                name="電話"
-                class="invalid-feedback"
-              ></error-message>
+              ></Field>
+              <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
             </div>
 
             <div class="mb-3">
               <label for="address" class="form-label">收件人地址</label>
-              <v-field
+              <Field
                 id="address"
                 name="地址"
                 type="text"
@@ -130,16 +121,14 @@
                 placeholder="請輸入地址"
                 rules="required"
                 v-model="form.user.address"
-              ></v-field>
-              <error-message
-                name="地址"
-                class="invalid-feedback"
-              ></error-message>
+              ></Field>
+              <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
             </div>
 
             <div class="mb-3">
               <label for="message" class="form-label">留言</label>
               <textarea
+                name=""
                 id="message"
                 class="form-control"
                 cols="30"
@@ -150,7 +139,7 @@
             <div class="text-end">
               <button type="submit" class="btn btn-danger">送出訂單</button>
             </div>
-          </v-form>
+          </Form>
         </div>
       </div>
     </div>
@@ -166,8 +155,17 @@ export default {
       data: [],
       cartData: [],
       products: [],
-      isLoadingItem: ''
+      isLoadingItem: '',
       // 轉圈效果
+      form: {
+        user: {
+          name: '',
+          email: '',
+          tel: '',
+          address: ''
+        },
+        message: ''
+      }
     }
   },
   methods: {

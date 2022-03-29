@@ -2,14 +2,16 @@ import { createApp } from 'vue'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import App from './App.vue'
-import router from './router'
+
 import carousel from 'vue-owl-carousel'
 
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
 import AllRules from '@vee-validate/rules'
 import { localize, setLocale } from '@vee-validate/i18n'
-import zhTW from './zh_TW.json'
+import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
+
+import App from './App.vue'
+import router from './router'
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
