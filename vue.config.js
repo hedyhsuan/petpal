@@ -1,4 +1,4 @@
 module.exports = {
-    publicPath: '/week6/'  
+    publicPath: '/petpal/'  
   }
 //   必須要有/斜線/
