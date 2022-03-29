@@ -12,20 +12,23 @@
 
           <table class="table table-hover">
             <thead>
-              <th width="120">區域</th>
+              <th width="100">區域</th>
               <th>愛園名稱</th>
-              <th width="120">品項</th>
-              <th width="120">售價</th>
-              <th width="120">需求數量</th>
-              <th width="100">圖片</th>
-              <th width="100">啟用</th>
+              <th width="100">位置</th>
+              <th width="100">品項</th>
+              <th width="100">售價</th>
+              <th width="100">需求數量</th>
+              <th width="80">圖片</th>
+              <th width="80">啟用</th>
               <th width="120">編輯</th>
             </thead>
             <tbody>
               <tr v-for="item in products" :key="item.id">
                 <td>{{ item.area }}</td>
                 <td>{{ item.category }}</td>
+                <td>{{ item.location }}</td>
                 <td>{{ item.title }}</td>
+
                 <td>{{ item.price }}</td>
                 <td>{{ item.requiredQty }}</td>
                 <td class="text-primary" v-if="item.introFile">有</td>
@@ -97,7 +100,10 @@ export default {
         imagesUrl: [],
         requiredQty: '',
         area: '',
-        introFile: '0'
+        introFile: '0',
+        adress: '',
+        tel: '',
+        location: ''
       }
     }
   },
