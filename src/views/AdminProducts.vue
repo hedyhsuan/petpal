@@ -14,7 +14,7 @@
             <thead>
               <th width="100">區域</th>
               <th>愛園名稱</th>
-              <th width="100">位置</th>
+              <th width="120">位置</th>
               <th width="100">品項</th>
               <th width="100">售價</th>
               <th width="100">需求數量</th>

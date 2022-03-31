@@ -4,7 +4,7 @@
     v-for="item in introProduct"
     :key="item.id"
   >
-    <div class="row">
+    <div class="row product">
       <div class="product-left col-md-7">
         <div>
           <img class="w-100" :src="item.imageUrl" alt="" />
@@ -35,6 +35,7 @@
             <div class="d-flex justify-content-between">
               <button
                 class="button-38"
+                :class="[{ active: activeName == item.title }]"
                 role="button"
                 @click="clickedItem(item)"
               >
@@ -83,7 +84,11 @@
         <div class="addCart" @click.prevent="addtoCart()">加入購物車</div>
       </div>
     </div>
+
     <div class="mainIntro col-12">
+      <div class="col-12 d-flex justify-content-center paw">
+        <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+      </div>
       <div class="introText">
         <p>地址：宜蘭縣文話一村三普李332-1號</p>
         <p>電話：092348923-018</p>
@@ -104,6 +109,7 @@
 </template>
 
 <script>
+import emitter from '@/libs/emitter'
 export default {
   data () {
     return {
@@ -116,6 +122,7 @@ export default {
       donateItem: {
         num: '1'
       },
+      activeName: '罐罐',
 
       cart: []
     }
@@ -170,6 +177,7 @@ export default {
       }
       this.$http.post(url, { data: item }).then((res) => {
         alert(res.data.message)
+        emitter.emit('get-cart')
       })
     },
 
@@ -207,6 +215,9 @@ export default {
     margin-top: 30px;
   }
 }
+.product {
+  margin-bottom: 100px;
+}
 
 .product-option {
   /* border-top: 1px solid #ccc; */
@@ -238,6 +249,9 @@ export default {
 
 .button-38:hover {
   background-color: rgb(249, 250, 251);
+}
+.btn-active {
+  background-color: #5d8964;
 }
 
 .button-38:focus {
@@ -315,20 +329,31 @@ export default {
   height: 50px;
   width: 50px;
 }
+
+.paw {
+  margin-bottom: 100px;
+}
+.paw img {
+  width: 40px;
+}
 .mainIntro {
   margin-top: 100px;
+  max-width: 800px;
+  margin: 0 auto;
+
   /* text-align: center; */
 }
 .introPics {
 }
-.mainIntro img {
+.introPics img {
   width: 100%;
   margin-top: 45px;
 }
 .introText {
-  width: 60%;
+  /* width: 60%; */
   margin-left: auto;
   margin-right: auto;
-  padding: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
 }
 </style>

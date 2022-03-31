@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-
+import 'bootstrap'
+import 'bootstrap-icons/font/bootstrap-icons.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
 import carousel from 'vue-owl-carousel'
 
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
@@ -29,6 +29,7 @@ const app = createApp(App)
 app.use(router)
 app.use(VueAxios, axios)
 
+// 數字轉換日期
 app.component('owl-carousel', carousel)
 app.component('Form', Form)
 app.component('Field', Field)

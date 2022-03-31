@@ -56,8 +56,12 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  linkActiveClass: 'active'
-  // router-link啟用時的bootstrap class設定
+  linkActiveClass: 'active',
+  // router-link啟用時的bootstrap css 讓畫面中啟用的選項自帶active功能
+  scrollBehavior (to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+  }
+
 })
 
 export default router

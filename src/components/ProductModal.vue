@@ -190,6 +190,7 @@
                 </div>
 
                 <div class="row">
+                  <div class="col-md-6 row">
                   <div class="mb-3 col-md-6">
                     <label for="origin_price" class="form-label">原價</label>
                     <input
@@ -211,6 +212,19 @@
                       class="form-control"
                       placeholder="請輸入售價"
                     />
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="mb-3 col-md-6">
+                    <label for="location" class="form-label">地點</label>
+                    <input
+                      id="location"
+                      v-model.number="item.location"
+                      type="text"
+                      class="form-control"
+                      placeholder="請輸入地點"
+                    />
+                  </div>
                   </div>
                 </div>
                 <hr />

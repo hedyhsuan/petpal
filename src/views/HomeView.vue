@@ -29,46 +29,57 @@
           />
         </div>
       </div>
-      <div></div>
     </div>
   </div>
-  <div class="mx-5"></div>
-  <div class="">
-    <div class="container sectionb">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center paw">
-          <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
-        </div>
 
-        <div
-          class="col-12 col-md-4 sectionb_left d-flex justify-content-center align-items-center"
-        >
-          <h4>PetPal在做什麼？</h4>
-        </div>
-        <div class="col-12 col-md-8 d-grid gap-5 spirits">
-          <div class="spirit">
-            <h5 style="margin: 20px">貓狗園的資助物資整合</h5>
+  <div class="">
+    <div class="container">
+      <div class="sectionb">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center paw">
+            <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
           </div>
-          <p>
-            愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
-          </p>
-          <div class="spirit">
-            <h5 style="margin: 20px">專案人員定期訪視及紀錄</h5>
+
+          <div
+            class="col-12 col-md-4 sectionb_left d-flex justify-content-center align-items-center"
+          >
+          <img src="https://imgur.com/DpLwooV.jpg" alt="">
+            <h4>PetPal在做什麼？</h4>
           </div>
-          <p>
-            我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
-          </p>
-          <div class="spirit">
-            <h5 style="margin: 20px">平均物資</h5>
+          <div class="col-12 col-md-8 d-grid gap-5 spirits">
+            <div class="spirit">
+              <h5 style="margin: 20px">貓狗園的資助物資整合</h5>
+            </div>
+            <p>
+              愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
+            </p>
+            <div class="spirit">
+              <h5 style="margin: 20px">專案人員定期訪視及紀錄</h5>
+            </div>
+            <p>
+              我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
+            </p>
+            <div class="spirit">
+              <h5 style="margin: 20px">平均物資</h5>
+            </div>
+            <p>
+              將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
+            </p>
           </div>
-          <p>
-            將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
-          </p>
         </div>
       </div>
+      <div class="col-12 d-flex justify-content-center paw">
+        <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+      </div>
+      <!-- <Carousel :picsrc="selterIntro"></Carousel> -->
+       <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <CardCarousel
+      class="col" v-for="(item,index) in selterIntro.slice(0, 3) " :key="index"
+      :selectitem="item"
+      ></CardCarousel>
+      <!-- .slice(0, 3) -->
     </div>
-    <!-- <Carousel :picsrc="selterIntro"></Carousel> -->
-    <CardCarousel :picsrc="selterIntro"></CardCarousel>
+  </div>
   </div>
 </template>
 
@@ -98,7 +109,7 @@ export default {
             vm.selterIntro.push(item)
           }
         })
-        console.log(vm.selterIntro)
+        // console.log(vm.selterIntro)
       })
     }
   },
@@ -129,13 +140,13 @@ export default {
   right: 0;
   width: 65%;
 }
-@media(max-width:991px){
-  .inner_mainImg{
+@media (max-width: 991px) {
+  .inner_mainImg {
     width: 85%;
   }
 }
-@media(max-width:768px){
-  .inner_mainImg{
+@media (max-width: 768px) {
+  .inner_mainImg {
     width: 100%;
   }
 }
@@ -157,17 +168,22 @@ export default {
   right: 20px;
   z-index: 0;
 }
-@media(max-width:768px){
-  .inner_rightImg{
-    top:-80%;
+@media (max-width: 768px) {
+  .inner_rightImg {
+    top: -80%;
   }
 }
 /* sectionb */
 .paw {
   margin-bottom: 100px;
 }
+@media (max-width: 768px) {
+  .paw {
+    margin: 10px 0;
+  }
+}
 .paw img {
-  width: 40px;
+  width: 35px;
 }
 .sectionb {
   margin-top: 100px;
@@ -175,14 +191,27 @@ export default {
   overflow: hidden;
 }
 .sectionb_left {
-  background-image: url(https://imgur.com/DpLwooV.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  /* background-image: url(https://imgur.com/DpLwooV.jpg); */
+ position: relative;
+}
+.sectionb_left img {
+  position: absolute;
+  width: 95%;
+  z-index: 0;
 }
 .sectionb_left h4 {
   margin: 40px 0px;
+  z-index: 1;
 }
+@media (max-width: 768px) {
+  .sectionb_left h4{
+    margin: 120px 0;
+  }
+  .sectionb_left img {
+    width: 40%;
+  }
+}
+
 .spirits {
   /* text-align: center; */
 }
@@ -207,5 +236,9 @@ export default {
   margin-top: 10px;
   z-index: 1;
   text-align: center;
+}
+
+.promote {
+  margin: 150px 0;
 }
 </style>
