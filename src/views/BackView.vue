@@ -1,12 +1,15 @@
 <template>
   <BackNavBar></BackNavBar>
+  <ToastMessage></ToastMessage>
   <router-view v-if="checkSuccess"></router-view>
 
   <!-- 用checkSuccess來切換驗證與否 -->
 </template>
 
 <script>
+import emitter from '@/methods/eventBus'
 import BackNavBar from '@/components/BackNavBar'
+import ToastMessage from '@/components/ToastMessage'
 
 export default {
   data () {
@@ -15,7 +18,14 @@ export default {
     }
   },
   components: {
-    BackNavBar
+    BackNavBar,
+    ToastMessage
+  },
+
+  provide () {
+    return {
+      emitter
+    }
   },
   methods: {
     // 登入admin相關頁面就要做登入驗證

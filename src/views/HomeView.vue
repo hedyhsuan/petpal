@@ -43,7 +43,7 @@
           <div
             class="col-12 col-md-4 sectionb_left d-flex justify-content-center align-items-center"
           >
-          <img src="https://imgur.com/DpLwooV.jpg" alt="">
+            <img src="https://imgur.com/DpLwooV.jpg" alt="" />
             <h4>PetPal在做什麼？</h4>
           </div>
           <div class="col-12 col-md-8 d-grid gap-5 spirits">
@@ -72,14 +72,16 @@
         <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
       </div>
       <!-- <Carousel :picsrc="selterIntro"></Carousel> -->
-       <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-      <CardCarousel
-      class="col" v-for="(item,index) in selterIntro.slice(0, 3) " :key="index"
-      :selectitem="item"
-      ></CardCarousel>
-      <!-- .slice(0, 3) -->
+      <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <CardCarousel
+          class="col"
+          v-for="(item, index) in selterIntro.slice(0, 3)"
+          :key="index"
+          :selectitem="item"
+        ></CardCarousel>
+        <!-- .slice(0, 3) -->
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -192,7 +194,7 @@ export default {
 }
 .sectionb_left {
   /* background-image: url(https://imgur.com/DpLwooV.jpg); */
- position: relative;
+  position: relative;
 }
 .sectionb_left img {
   position: absolute;
@@ -204,7 +206,7 @@ export default {
   z-index: 1;
 }
 @media (max-width: 768px) {
-  .sectionb_left h4{
+  .sectionb_left h4 {
     margin: 120px 0;
   }
   .sectionb_left img {
@@ -236,9 +238,5 @@ export default {
   margin-top: 10px;
   z-index: 1;
   text-align: center;
-}
-
-.promote {
-  margin: 150px 0;
 }
 </style>

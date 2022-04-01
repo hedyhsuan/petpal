@@ -30,6 +30,14 @@ const routes = [
       {
         path: 'cart',
         component: () => import('../views/CartView.vue')
+      },
+      {
+        path: 'checkout',
+        component: () => import('../views/CheckoutView.vue')
+      },
+      {
+        path: '/order/:id',
+        component: () => import('../views/OrderView.vue')
       }
     ]
   },
@@ -48,7 +56,12 @@ const routes = [
       {
         path: 'coupon',
         component: () => import('../views/AdminCoupon.vue')
+      },
+      {
+        path: 'orders',
+        component: () => import('../views/AdminOrders.vue')
       }
+
     ]
   }
 ]
@@ -56,12 +69,8 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  linkActiveClass: 'active',
+  linkActiveClass: 'active'
   // router-link啟用時的bootstrap css 讓畫面中啟用的選項自帶active功能
-  scrollBehavior (to, from, savedPosition) {
-    // return 期望滚动到哪个的位置
-  }
-
 })
 
 export default router

@@ -46,7 +46,7 @@
         </ul>
       </div>
 
-      <div class="cart dropdown" style="cursor: pointer">
+      <div class="cart dropdown" style="cursor: pointer" @click="gocart()">
         <div
           class=""
           id="cartDropdown"
@@ -55,18 +55,7 @@
         >
           <div class="d-flex">
             <div class="position-relative me-md-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-cart-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                />
-              </svg>
+              <i class="bi bi-cart-fill"></i>
               <span
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
               >
@@ -76,6 +65,8 @@
             <span class="d-none d-md-block">購物車</span>
           </div>
         </div>
+
+        <!-- 下拉選單 -->
         <div class="dropdown-content" aria-labelledby="cartDropdown">
           <div>
             <div class="minicart">
@@ -96,23 +87,23 @@
                         {{ item.product.title }}
                       </div>
                     </div>
-                    <div style="font-size: 14px">
-                      <span>數量：</span><span>{{ item.qty }}</span>
+                    <div
+                      class="d-flex justify-content-between"
+                      style="font-size: 14px"
+                    >
+                      <span>數量：</span>
+                      <input
+                        min="1"
+                        type="number"
+                        class="form-control"
+                        v-model.number="item.qty"
+                        @change="updateCart(item.id)"
+                      />
+                      <!-- <span>{{ item.qty }}</span> -->
                     </div>
                   </div>
                   <div class="delCart" @click="delProduct(item.id)">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-trash-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                      />
-                    </svg>
+                    <i class="bi bi-trash-fill"></i>
                   </div>
                 </li>
               </ul>
@@ -206,6 +197,14 @@ export default {
       // 因此一定要加|| []
       this.heartQuantity = this.hearted.length
     },
+    updateCart (id) {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
+      this.$http.put(url).then((res) => {
+        alert(res.data.message)
+        this.getCart()
+        // 更新上方小購物車數量
+      })
+    },
     delProduct (id) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.$http.delete(url).then((res) => {
@@ -213,6 +212,9 @@ export default {
         this.getCart()
         // 更新上方小購物車數量
       })
+    },
+    gocart () {
+      this.$router.push('/cart')
     }
   },
 
@@ -225,7 +227,7 @@ export default {
   }
 }
 </script>
-svg{ }
+
 <style scoped>
 .cart {
   color: rgba(0, 0, 0, 0.55);

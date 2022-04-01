@@ -126,10 +126,14 @@
                         class="form-control"
                         placeholder="請輸入名稱"
                       /> -->
-                      <select id="area" class="form-control" v-model="item.area">
-                            <option>北部</option>
-                            <option>中部</option>
-                            <option>南部</option>
+                      <select
+                        id="area"
+                        class="form-control"
+                        v-model="item.area"
+                      >
+                        <option>北部</option>
+                        <option>中部</option>
+                        <option>南部</option>
                       </select>
                     </div>
                     <div class="col-md-6">
@@ -191,40 +195,39 @@
 
                 <div class="row">
                   <div class="col-md-6 row">
-                  <div class="mb-3 col-md-6">
-                    <label for="origin_price" class="form-label">原價</label>
-                    <input
-                      id="origin_price"
-                      v-model.number="item.origin_price"
-                      type="number"
-                      min="0"
-                      class="form-control"
-                      placeholder="請輸入原價"
-                    />
-                  </div>
-                  <div class="mb-3 col-md-6">
-                    <label for="price" class="form-label">售價</label>
-                    <input
-                      id="price"
-                      v-model.number="item.price"
-                      type="number"
-                      min="0"
-                      class="form-control"
-                      placeholder="請輸入售價"
-                    />
-                  </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="origin_price" class="form-label">原價</label>
+                      <input
+                        id="origin_price"
+                        v-model.number="item.origin_price"
+                        type="number"
+                        class="form-control"
+                        placeholder="請輸入原價"
+                      />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="price" class="form-label">售價</label>
+                      <input
+                        id="price"
+                        v-model.number="item.price"
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        placeholder="請輸入售價"
+                      />
+                    </div>
                   </div>
                   <div class="col-md-6">
-                      <div class="mb-3 col-md-6">
-                    <label for="location" class="form-label">地點</label>
-                    <input
-                      id="location"
-                      v-model.number="item.location"
-                      type="text"
-                      class="form-control"
-                      placeholder="請輸入地點"
-                    />
-                  </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="location" class="form-label">地點</label>
+                      <input
+                        id="location"
+                        v-model.number="item.location"
+                        type="text"
+                        class="form-control"
+                        placeholder="請輸入地點"
+                      />
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -303,6 +306,7 @@ export default {
     }
   },
   props: ['product', 'isNew'],
+  inject: ['emitter'],
   methods: {
     updateProduct () {
       let url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`
@@ -315,6 +319,10 @@ export default {
 
       this.$http[method](url, { data: this.item })
         .then((response) => {
+          // this.emitter.emit('push-message', {
+          //   style: 'success',
+          //   title: '更新完成'
+          // })
           alert(response.data.message)
           this.$emit('update')
           // 更新畫面資料

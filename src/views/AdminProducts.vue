@@ -1,11 +1,15 @@
 <template>
   <div>
     <div class="container">
-      <div class="row py-3">
+      <div class="py-3">
+        <h3>產品列表</h3>
         <div class="col-md-12">
-          <h3>產品列表</h3>
           <div class="text-end my-4">
-            <button class="btn btn-primary" @click="openModal('isNew')">
+            <button
+              class="btn btn-primary"
+              style="color: white"
+              @click="openModal('isNew')"
+            >
               新增商品
             </button>
           </div>
@@ -117,7 +121,7 @@ export default {
           const { products } = res.data
           // 解構賦值
           this.products = products
-          console.log(this.products)
+          // console.log(this.products)
           // this.pagination = pagination
         })
         .catch((res) => {
