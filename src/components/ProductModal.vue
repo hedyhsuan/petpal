@@ -217,17 +217,28 @@
                       />
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6"></div>
+                </div>
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="location" class="form-label">地點</label>
+                    <input
+                      id="location"
+                      v-model.number="item.location"
+                      type="text"
+                      class="form-control"
+                      placeholder="請輸入地點"
+                    />
+                  </div>
                     <div class="mb-3 col-md-6">
-                      <label for="location" class="form-label">地點</label>
-                      <input
-                        id="location"
-                        v-model.number="item.location"
-                        type="text"
-                        class="form-control"
-                        placeholder="請輸入地點"
-                      />
-                    </div>
+                    <label for="tel" class="form-label">地點</label>
+                    <input
+                      id="tel"
+                      v-model.number="item.tel"
+                      type="number"
+                      class="form-control"
+                      placeholder="請輸入電話"
+                    />
                   </div>
                 </div>
                 <hr />
