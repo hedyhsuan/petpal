@@ -17,32 +17,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/shelter/allselter"
-              >愛園一覽</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/login">
+            <router-link class="nav-link" to="/shelter/allselter">
               <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-suit-heart-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"
-                  />
-                </svg>
-                收藏</span
+                <i class="bi bi-file-earmark-image"></i>
+                愛園一覽</span
               >
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/login">登入</router-link>
+            <router-link class="nav-link" to="/favorite">
+              <span>
+                <i class="bi bi-suit-heart-fill"></i>
+                收藏</span
+              >
+            </router-link>
           </li>
+          <!-- <li class="nav-item">
+            <router-link class="nav-link" to="/login">
+            登入</router-link>
+          </li> -->
         </ul>
       </div>
 
@@ -92,17 +85,20 @@
                       style="font-size: 14px"
                     >
                       <span>數量：</span>
-                      <input
+                      <!-- <input
                         min="1"
                         type="number"
                         class="form-control"
                         v-model.number="item.qty"
-                        @change="updateCart(item.id)"
-                      />
-                      <!-- <span>{{ item.qty }}</span> -->
+                        @change="updateCart(item.id, item.qty)"
+                      /> -->
+                      <span>{{ item.qty }}</span>
                     </div>
                   </div>
-                  <div class="delCart" @click="delProduct(item.id)">
+                  <div
+                    class="delCart"
+                    @click="delProduct(item.id, item.product.category)"
+                  >
                     <i class="bi bi-trash-fill"></i>
                   </div>
                 </li>
@@ -184,6 +180,7 @@ export default {
   methods: {
     getCart () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
+
       this.$http.get(url).then((res) => {
         this.cartData = res.data.data
         this.carts = res.data.data.carts
@@ -197,20 +194,45 @@ export default {
       // 因此一定要加|| []
       this.heartQuantity = this.hearted.length
     },
-    updateCart (id) {
+    updateCart (id, qty) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.$http.put(url).then((res) => {
-        alert(res.data.message)
-        this.getCart()
+      const item = {
+        product_id: id,
+        qty: qty
+      }
+      this.$http.put(url, { data: item }).then((res) => {
+        // this.getCart()
         // 更新上方小購物車數量
+        // 同品項不累加
+        emitter.emit('update-cart')
+        // 因為可能會同時在購物車頁面，所以更新發送更新至該頁面
       })
     },
-    delProduct (id) {
+    delProduct (id, category) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.$http.delete(url).then((res) => {
-        alert(res.data.message)
+        emitter.emit('update-cart')
+        // 因為可能會同時在購物車頁面，所以更新發送更新至該頁面
         this.getCart()
         // 更新上方小購物車數量
+
+        // sweet alert
+        const Toast = this.$swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: false,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', this.$swal.stopTimer)
+            toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: `已刪除${category}`
+        })
       })
     },
     gocart () {
@@ -251,6 +273,12 @@ export default {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+@media (max-width: 767px) {
+  .dropdown:hover .dropdown-content{
+    display: none;
+  }
+}
+
 .cart-body {
   border-top: 1px solid #ddd;
   text-align: center;
