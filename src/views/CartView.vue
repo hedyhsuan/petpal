@@ -8,7 +8,7 @@
             <div class="step">填寫訂購資料</div>
             <div class="step">購物完成!</div>
           </div>
-          <div class="orderlist row" v-if="data.total>0">
+          <div class="orderlist row" v-if="data.total > 0">
             <div class="col-12 col-md-7 mb-5">
               <h5 class="">購物清單</h5>
               <table id="checkoutList" class="w-100 mt-4">
@@ -23,14 +23,22 @@
                         <i class="bi bi-trash-fill"></i>
                       </button>
                     </td>
-                    <td width="150">
+                    <td width="120">
                       <div class="cart-title">{{ item.product.category }}</div>
                     </td>
                     <td width="80">
                       <div class="cart-title">{{ item.product.title }}</div>
                     </td>
                     <!-- <td>{{item.price|currency}}</td> -->
-                    <td class="text-center" width="80">{{ item.qty }}</td>
+                    <td class="text-center" width="100">
+                      <input
+                        min="1"
+                        type="number"
+                        class="form-control"
+                        v-model.number="item.qty"
+                        @change="updateCart(item.id, item.qty)"
+                      />
+                    </td>
 
                     <td width="80">NT.{{ item.total }}</td>
                   </tr>
@@ -51,7 +59,7 @@
             </div>
           </div>
           <div v-else class="text-center">
-        <h5>購物車內尚無商品</h5>
+            <h5>購物車內尚無商品</h5>
           </div>
         </div>
       </div>
@@ -82,13 +90,61 @@ export default {
         // console.log(vm.data)
       })
     },
+    updateCart (id, qty) {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
+      const item = {
+        product_id: id,
+        qty: qty
+      }
+      this.$http.put(url, { data: item }).then((res) => {
+        // this.getCart()
+        // 更新上方小購物車數量
+        // 同品項不累加
+        emitter.emit('update-cart')
+        // 因為可能會同時在購物車頁面，所以更新發送更新至該頁面
+
+        // sweet alert
+        const Toast = this.$swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: false,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', this.$swal.stopTimer)
+            toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: '已更新購物車'
+        })
+      })
+    },
     delProduct (id) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.$http.delete(url).then((res) => {
-        alert(res.data.message)
         this.getCart()
         emitter.emit('get-cart')
         // 更新上方小購物車數量
+
+        const Toast = this.$swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: false,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', this.$swal.stopTimer)
+            toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: '已刪除'
+        })
       })
     },
 
@@ -114,6 +170,10 @@ export default {
 
   mounted () {
     this.getCart()
+    emitter.on('update-cart', () => {
+      this.getCart()
+      // 當監聽到get-cart就觸發
+    })
   }
 }
 </script>

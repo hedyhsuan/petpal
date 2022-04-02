@@ -17,7 +17,7 @@
             <button
               class="button-8"
               role="button"
-              @click="goShelter(item.category)"
+              @click="goShelter(selectitem.category)"
             >
               進去看看
             </button>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     goShelter (id) {
-      this.$router.push(`${id}`)
+      this.$router.push(`/shelter/${id}`)
     },
 
     switchHeart (select) {
@@ -79,6 +79,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .cards {
   margin-bottom: 100px;

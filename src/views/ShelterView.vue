@@ -1,14 +1,5 @@
 <template>
   <div class="shelter_banner container">
-    <!-- <div class="banner_text">
-      <div class="text_area">
-        <h4>捐出小愛心</h4>
-        <h5>陪浪浪等一個家</h5>
-      </div>
-    </div>
-    <div class="banner_img">
-      <img src="https://imgur.com/kaTljeN.jpg" alt="" />
-    </div> -->
 
     <div class="banner_img">
       <img src="https://imgur.com/kaTljeN.jpg" alt="" />

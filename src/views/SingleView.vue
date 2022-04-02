@@ -11,23 +11,11 @@
         </div>
       </div>
       <div class="product-right col-md-5 p-4">
-        <h5>{{ item.category }}</h5>
-        <div class="d-flex">
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-suit-heart-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"
-              />
-            </svg>
+        <div class="d-flex justify-content-between">
+          <h5>{{ item.category }}</h5>
+          <div class="addFav" @click="switchHeart(item)">
+            <i :class="changeIcon"></i>
           </div>
-          <p class="mx-2">加入收藏</p>
         </div>
 
         <div class="product-option" v-for="item in sortProduct" :key="item.id">
@@ -35,9 +23,9 @@
             <div class="d-flex justify-content-between">
               <button
                 class="button-38"
-                :class="[{ active: activeName == item.title }]"
+                :class="{ active: activeName == item.title }"
                 role="button"
-                @click="clickedItem(item)"
+                @click="clickedItem(item, item.title)"
               >
                 {{ item.title }}
               </button>
@@ -114,24 +102,28 @@ export default {
   data () {
     return {
       products: [],
+      // 所有後台商品
       shelterName: '',
+      // 用params抓到的id(愛園名稱)
+      hearted: JSON.parse(localStorage.getItem('hearted')) || [],
       sortProduct: [],
-      // 撈同一間愛園的資料
+      // 過濾出同一間愛園的資料
       introProduct: [],
       // 愛園中有介紹資料的一筆
       donateItem: {
         num: '1'
       },
       activeName: '罐罐',
-
-      cart: []
+      index: '',
+      orders: []
+      // 所有訂單
+      // cart: []
     }
   },
   methods: {
     getProduct () {
       const vm = this
       vm.shelterName = this.$route.params.id
-      //   const url = `https://vue3-course-api.hexschool.io/v2/api/houhsuan/product/${id}`
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
       this.$http.get(url).then((res) => {
         this.products = res.data.products
@@ -139,10 +131,14 @@ export default {
           // 從所有商品中將同一個愛園的資料抓出來
           if (item.category === vm.shelterName) {
             vm.sortProduct.push(item)
+
             vm.donateItem = vm.sortProduct[0]
+            vm.donateItem.num = 1
+            // 先把第一筆資料撈出來顯示畫面上的價錢/單位
           }
         })
-        console.log(vm.sortProduct[0])
+        // console.log(vm.donateItem)
+        // console.log(vm.sortProduct[0])
         // 把有介紹資料的資料抓出來
         this.sortProduct.forEach((item) => {
           if (item.introFile === 1) {
@@ -152,11 +148,10 @@ export default {
       })
     },
     // 點擊確認要下單的品項
-    clickedItem (item) {
+    clickedItem (item, title) {
       this.donateItem = item
       this.donateItem.num = 1
-
-      console.log(this.donateItem)
+      this.activeName = title
     },
     btnPlus () {
       this.donateItem.num++
@@ -168,6 +163,23 @@ export default {
         this.donateItem.num--
       }
     },
+    switchHeart (select) {
+      this.hearted = JSON.parse(localStorage.getItem('hearted')) || []
+      this.index = this.hearted.findIndex((item) => {
+        return select.category === item
+        // 如果點擊的內容是已關注的商品就存取他的索引值做為刪除的目標
+      })
+
+      if (this.hearted.indexOf(select.category) === -1) {
+        this.hearted.push(select.category)
+        // 如果點擊的item的id沒有在已關注區就塞進去
+        localStorage.setItem('hearted', JSON.stringify(this.hearted))
+      } else {
+        this.hearted.splice(this.index, 1)
+        // 如果已經在裡面就用前面得到的index刪掉它
+        localStorage.setItem('hearted', JSON.stringify(this.hearted))
+      }
+    },
 
     addtoCart () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
@@ -176,23 +188,47 @@ export default {
         qty: this.donateItem.num
       }
       this.$http.post(url, { data: item }).then((res) => {
-        alert(res.data.message)
+        // 更新上方小購物車數字
         emitter.emit('get-cart')
-      })
-    },
 
-    getCart () {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
-      const vm = this
-      this.$http.get(url).then((res) => {
-        vm.cart = res.data.data.carts
-        // console.log(vm.cart)
+        // sweet alert
+        const Toast = this.$swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: false,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', this.$swal.stopTimer)
+            toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: '已加入購物車'
+        })
       })
+    }
+    // getCart () {
+    //   const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
+    //   const vm = this
+    //   this.$http.get(url).then((res) => {
+    //     vm.cart = res.data.data.carts
+    //   })
+    // }
+  },
+  computed: {
+    changeIcon () {
+      if (this.hearted.indexOf(this.shelterName) === -1) {
+        return 'icon bi-suit-heart-fill heart'
+      } else {
+        return 'icon bi-suit-heart-fill hearted'
+      }
     }
   },
   mounted () {
     this.getProduct()
-    // this.getCart()
   }
 }
 </script>
@@ -218,7 +254,27 @@ export default {
 .product {
   margin-bottom: 100px;
 }
-
+.addFav {
+  /* position: absolute; */
+  width: 35px;
+  height: 35px;
+  border: 1px solid #849387;
+  border-radius: 50%;
+  background-color: #d5e3d5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* top: 10px; */
+  /* right: 26px; */
+  color: rgb(189, 189, 189);
+  cursor: pointer;
+}
+.heart {
+  color: white;
+}
+.hearted {
+  color: #3c6042;
+}
 .product-option {
   /* border-top: 1px solid #ccc; */
 }
@@ -355,5 +411,13 @@ export default {
   margin-right: auto;
   padding: 20px;
   border: 1px solid #ddd;
+}
+.active {
+  background-color: #5d8964;
+  color: white;
+}
+.active:hover {
+  background-color: #5d8964;
+  color: white;
 }
 </style>

@@ -171,7 +171,7 @@ export default {
     },
     createOrder () {
       const order = this.form
-      console.log(order)
+      // console.log(order)
 
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`
 

@@ -38,6 +38,10 @@ const routes = [
       {
         path: '/order/:id',
         component: () => import('../views/OrderView.vue')
+      },
+      {
+        path: 'favorite',
+        component: () => import('../views/FavoriteView.vue')
       }
     ]
   },
