@@ -4,6 +4,8 @@ import 'bootstrap-icons/font/bootstrap-icons.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import carousel from 'vue-owl-carousel'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
 import AllRules from '@vee-validate/rules'
@@ -28,6 +30,7 @@ const app = createApp(App)
 
 app.use(router)
 app.use(VueAxios, axios)
+app.use(VueSweetalert2)
 
 // 數字轉換日期
 app.component('owl-carousel', carousel)
