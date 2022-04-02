@@ -247,6 +247,12 @@ tbody td {
   background-color: #bfd7c3;
   color: #3c6042;
 }
+@media (max-width: 767px) {
+  .customerInfo {
+    margin-top: 30px;
+  }
+}
+
 .checkImg {
   border: 1px solid #ddd;
   background-color: white;

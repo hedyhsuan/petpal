@@ -5,13 +5,13 @@
     :key="item.id"
   >
     <div class="row product">
-      <div class="product-left col-md-7">
+      <div class="product-left col-lg-7 col-md-6">
         <div>
           <img class="w-100" :src="item.imageUrl" alt="" />
         </div>
       </div>
-      <div class="product-right col-md-5 p-4">
-        <div class="d-flex justify-content-between">
+      <div class="product-right col-lg-5 col-md-6 pt-4 ">
+        <div class="d-flex justify-content-between mx-2">
           <h5>{{ item.category }}</h5>
           <div class="addFav" @click="switchHeart(item)">
             <i :class="changeIcon"></i>
@@ -190,7 +190,6 @@ export default {
       this.$http.post(url, { data: item }).then((res) => {
         // 更新上方小購物車數字
         emitter.emit('get-cart')
-
         // sweet alert
         const Toast = this.$swal.mixin({
           toast: true,
@@ -237,6 +236,12 @@ export default {
 .product-right {
   border: 1px solid #ccc;
 }
+@media (max-width: 767px) {
+  .product-right {
+    margin-top: 30px;
+  }
+}
+
 .product-wrap {
   margin-top: 70px;
   margin-bottom: 30px;

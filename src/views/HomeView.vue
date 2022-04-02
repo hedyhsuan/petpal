@@ -40,69 +40,85 @@
             <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
           </div>
           <!-- paw -->
-        <div class="bg-white">
-          <div>
-            <div class="spirit_wrap row">
-              <div class="spirit_img col-md-6">
-                <img class="w-100" src="https://imgur.com/SnpDfOS.jpg" alt="" />
-              </div>
+          <div class="text-center">
+            <h4 class=" mb-5">petpal在做什麼？</h4>
+          </div>
 
-              <div class="spirit_text_area col-md-6">
-                <div>
-                  <div class="spirit_text">
-                    <h5 class="text-center">貓狗園的資助物資整合</h5>
-                  </div>
-                  <div class="p-5">
-                    <p>
-                      愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
-                    </p>
+          <div class="bg-white">
+            <div>
+              <div class="spirit_wrap row">
+                <div class="spirit_img col-md-6">
+                  <img
+                    class="w-100"
+                    src="https://imgur.com/SnpDfOS.jpg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="spirit_text_area col-md-6 p-4">
+                  <div>
+                    <div class="spirit_text">
+                      <h5 class="text-center">貓狗園的資助物資整合</h5>
+                    </div>
+                    <div class="p-md-4 p-2">
+                      <p>
+                        愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <div class="spirit_wrap row flex-row-reverse">
-              <div class="spirit_img col-md-6">
-                <img class="w-100" src="https://imgur.com/US9HVsB.jpg" alt="" />
-              </div>
+            <div>
+              <div class="spirit_wrap row flex-row-reverse">
+                <div class="spirit_img col-md-6">
+                  <img
+                    class="w-100"
+                    src="https://imgur.com/US9HVsB.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <div class="spirit_text_area col-md-6">
-                <div>
-                  <div class="spirit_text">
-                    <h5 class="text-center">專案人員定期訪視及紀錄</h5>
-                  </div>
-                  <div class="p-5">
-                    <p>
-                      我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
-                    </p>
+                <div class="spirit_text_area col-md-6 p-4">
+                  <div>
+                    <div class="spirit_text">
+                      <h5 class="text-center">專案人員定期訪視及紀錄</h5>
+                    </div>
+                    <div class="p-md-4 p-2">
+                      <p>
+                        我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <div class="spirit_wrap row">
-              <div class="spirit_img col-md-6">
-                <img class="w-100" src="https://imgur.com/TMOZ4aO.jpg" alt="" />
-              </div>
+            <div>
+              <div class="spirit_wrap row">
+                <div class="spirit_img col-md-6">
+                  <img
+                    class="w-100"
+                    src="https://imgur.com/TMOZ4aO.jpg"
+                    alt=""
+                  />
+                </div>
 
-              <div class="spirit_text_area col-md-6">
-                <div>
-                  <div class="spirit_text">
-                    <h5 class="text-center">平均物資</h5>
-                  </div>
-                  <div class="p-5">
-                    <p>
-                      將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
-                    </p>
+                <div class="spirit_text_area col-md-6 p-4">
+                  <div>
+                    <div class="spirit_text">
+                      <h5 class="text-center">平均物資</h5>
+                    </div>
+                    <div class="p-md-4 p-2">
+                      <p>
+                        將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
@@ -232,11 +248,11 @@ export default {
 .paw {
   margin-bottom: 100px;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .paw {
     margin: 10px 0;
   }
-}
+} */
 .paw img {
   width: 35px;
 }

@@ -9,7 +9,7 @@
             <div class="step">購物完成!</div>
           </div>
           <div class="orderlist row" v-if="data.total > 0">
-            <div class="col-12 col-md-7 mb-5">
+            <div class="col-12 col-lg-7 mb-5">
               <h5 class="">購物清單</h5>
               <table id="checkoutList" class="w-100 mt-4">
                 <tbody>
@@ -40,20 +40,15 @@
                       />
                     </td>
 
-                    <td width="80">NT.{{ item.total }}</td>
+                    <td class="text-end" width="80">NT.{{ item.total }}</td>
                   </tr>
-                  <!-- <tr>
-                  <td class="border-bottom-0"></td>
-                  <td>折扣後價格</td>
-                  <td style="font-size: 18px">12313</td>
-                </tr> -->
                 </tbody>
               </table>
             </div>
-            <div class="col-12 col-md-5 total">
+            <div class="col-12 col-lg-5 total">
               <div class="text-end">
                 總金額：
-                <span>{{ data.total }}</span>
+                <span class="h5">NT.{{ data.total }}</span>
               </div>
               <div class="addCart" @click.prevent="Checkout()">結帳去</div>
             </div>

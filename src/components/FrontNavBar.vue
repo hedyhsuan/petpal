@@ -3,7 +3,11 @@
     <div class="container">
       <router-link class="navbar-brand" to="/">PetPal</router-link>
       <!-- 小購物車 -->
-      <div class="cart dropdown ms-auto order-lg-3" style="cursor: pointer" @click="gocart()">
+      <div
+        class="cart dropdown ms-auto order-lg-3"
+        style="cursor: pointer"
+        @click="gocart()"
+      >
         <div
           class=""
           id="cartDropdown"
@@ -242,8 +246,15 @@ export default {
 </script>
 
 <style scoped>
-.navbar-toggler{
+.navbar-toggler {
   border: none;
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: white;
+    padding: 10px;
+  }
 }
 .cart {
   color: rgba(0, 0, 0, 0.55);
