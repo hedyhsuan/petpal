@@ -2,44 +2,8 @@
   <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-light">
     <div class="container">
       <router-link class="navbar-brand" to="/">PetPal</router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/shelter/allselter">
-              <span>
-                <i class="bi bi-file-earmark-image"></i>
-                愛園一覽</span
-              >
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/favorite">
-              <span>
-                <i class="bi bi-suit-heart-fill"></i>
-                收藏</span
-              >
-            </router-link>
-          </li>
-          <!-- <li class="nav-item">
-            <router-link class="nav-link" to="/login">
-            登入</router-link>
-          </li> -->
-        </ul>
-      </div>
-
-      <div class="cart dropdown" style="cursor: pointer" @click="gocart()">
+      <!-- 小購物車 -->
+      <div class="cart dropdown ms-auto order-lg-3" style="cursor: pointer" @click="gocart()">
         <div
           class=""
           id="cartDropdown"
@@ -85,13 +49,6 @@
                       style="font-size: 14px"
                     >
                       <span>數量：</span>
-                      <!-- <input
-                        min="1"
-                        type="number"
-                        class="form-control"
-                        v-model.number="item.qty"
-                        @change="updateCart(item.id, item.qty)"
-                      /> -->
                       <span>{{ item.qty }}</span>
                     </div>
                   </div>
@@ -118,6 +75,40 @@
           </div>
         </div>
       </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 漢堡按鈕dropdown -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/shelter/allselter">
+              <span>
+                <i class="bi bi-file-earmark-image"></i>
+                愛園一覽</span
+              >
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/favorite">
+              <span>
+                <i class="bi bi-suit-heart-fill"></i>
+                收藏</span
+              >
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <!-- 漢堡按鈕dropdown -->
 
       <!-- <div class="mx-2">
         <a href="#">
@@ -251,6 +242,9 @@ export default {
 </script>
 
 <style scoped>
+.navbar-toggler{
+  border: none;
+}
 .cart {
   color: rgba(0, 0, 0, 0.55);
 }
@@ -274,7 +268,7 @@ export default {
   display: block;
 }
 @media (max-width: 767px) {
-  .dropdown:hover .dropdown-content{
+  .dropdown:hover .dropdown-content {
     display: none;
   }
 }
