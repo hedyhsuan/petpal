@@ -221,7 +221,7 @@
                 </div>
                 <div class="row">
                   <div class="mb-3 col-md-6">
-                    <label for="location" class="form-label">地點</label>
+                    <label for="location" class="form-label">地區</label>
                     <input
                       id="location"
                       v-model.number="item.location"
@@ -231,11 +231,11 @@
                     />
                   </div>
                     <div class="mb-3 col-md-6">
-                    <label for="tel" class="form-label">地點</label>
+                    <label for="tel" class="form-label">電話</label>
                     <input
                       id="tel"
-                      v-model.number="item.tel"
-                      type="number"
+                      v-model="item.tel"
+                      type="text"
                       class="form-control"
                       placeholder="請輸入電話"
                     />

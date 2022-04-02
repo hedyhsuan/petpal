@@ -176,14 +176,10 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`
 
       this.$http.post(url, { data: order }).then((res) => {
-        alert(res.data.message)
+        // alert(res.data.message)
         emitter.emit('get-cart')
-        this.$router.push(`/order/${res.data.orderId}`)
-
         // 觸發上方小購物車更新
-        // emitter.emit('get-cart')
-        // this.$router.push(`order/${res.data.orderId}`)
-        // console.log(res.data.orderId)
+        this.$router.push(`/order/${res.data.orderId}`)
       })
     }
   },

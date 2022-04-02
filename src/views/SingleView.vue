@@ -10,7 +10,7 @@
           <img class="w-100" :src="item.imageUrl" alt="" />
         </div>
       </div>
-      <div class="product-right col-lg-5 col-md-6 pt-4 ">
+      <div class="product-right col-lg-5 col-md-6 pt-4">
         <div class="d-flex justify-content-between mx-2">
           <h5>{{ item.category }}</h5>
           <div class="addFav" @click="switchHeart(item)">
@@ -78,8 +78,8 @@
         <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
       </div>
       <div class="introText">
-        <p>地址：宜蘭縣文話一村三普李332-1號</p>
-        <p>電話：092348923-018</p>
+        <p>地址：<span>{{item.location}}</span></p>
+        <p>電話：<span>{{item.tel}}</span></p>
         <div>
           {{ item.content }}
         </div>
@@ -190,6 +190,7 @@ export default {
       this.$http.post(url, { data: item }).then((res) => {
         // 更新上方小購物車數字
         emitter.emit('get-cart')
+
         // sweet alert
         const Toast = this.$swal.mixin({
           toast: true,
