@@ -1,96 +1,107 @@
 <template>
-  <div
-    class="container product-wrap"
-    v-for="item in introProduct"
-    :key="item.id"
-  >
-    <div class="row product">
-      <div class="product-left col-lg-7 col-md-6">
-        <div>
-          <img class="w-100" :src="item.imageUrl" alt="" />
-        </div>
-      </div>
-      <div class="product-right col-lg-5 col-md-6 pt-4">
-        <div class="d-flex justify-content-between mx-2">
-          <h5>{{ item.category }}</h5>
-          <div class="addFav" @click="switchHeart(item)">
-            <i :class="changeIcon"></i>
+  <div>
+    <loading :active="isLoading" />
+    <div
+      class="container product-wrap"
+      v-for="item in introProduct"
+      :key="item.id"
+    >
+      <div class="row product">
+        <div class="product-left col-lg-7 col-md-6">
+          <div>
+            <img class="w-100" :src="item.imageUrl" alt="" />
           </div>
         </div>
+        <div class="product-right col-lg-5 col-md-6 pt-4">
+          <div class="d-flex justify-content-between mx-2">
+            <h5>{{ item.category }}</h5>
+            <div class="addFav" @click="switchHeart(item)">
+              <i :class="changeIcon"></i>
+            </div>
+          </div>
 
-        <div class="product-option" v-for="item in sortProduct" :key="item.id">
-          <div class="mt-3">
-            <div class="d-flex justify-content-between">
-              <button
-                class="button-38"
-                :class="{ active: activeName == item.title }"
-                role="button"
-                @click="clickedItem(item, item.title)"
-              >
-                {{ item.title }}
-              </button>
-              <div class="goal mx-3 d-flex">
-                <div
-                  class="circle d-flex justify-content-center align-items-center"
+          <div
+            class="product-option"
+            v-for="item in sortProduct"
+            :key="item.id"
+          >
+            <div class="mt-3">
+              <div class="d-flex justify-content-between">
+                <button
+                  class="button-38"
+                  :class="{ active: activeName == item.title }"
+                  role="button"
+                  @click="clickedItem(item, item.title)"
                 >
-                  <div style="color: #51c951">40%</div>
-                </div>
-                <div class="mx-4">
-                  <div style="font-size: 1rem; font-weight: bold">
-                    目前數量<span class="mx-2">75</span>{{ item.unit }}
+                  {{ item.title }}
+                </button>
+                <div class="goal mx-3 d-flex">
+                  <div
+                    class="circle d-flex justify-content-center align-items-center"
+                  >
+                    <div style="color: #51c951">40%</div>
                   </div>
-                  <div style="font-size: 0.75rem">
-                    需求數量<span class="mx-2">{{ item.requiredQty }}</span
-                    >包
+                  <div class="mx-4">
+                    <div style="font-size: 1rem; font-weight: bold">
+                      目前數量<span class="mx-2">75</span>{{ item.unit }}
+                    </div>
+                    <div style="font-size: 0.75rem">
+                      需求數量<span class="mx-2">{{ item.requiredQty }}</span
+                      >包
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div
+            class="d-flex"
+            style="
+              margin: 30px 10px;
+              border-bottom: 1px solid #ccc;
+              padding-bottom: 10px;
+            "
+          >
+            <h5>NT.{{ donateItem.price }}</h5>
+            <h5 class="mx-5">/ {{ donateItem.unit }}</h5>
+          </div>
+
+          <div class="input-group">
+            <button class="btn down" @click="btnMinus">-</button>
+            <input
+              type="text"
+              class="text-center quantity"
+              v-model="donateItem.num"
+            />
+            <button class="btn up" @click="btnPlus">+</button>
+          </div>
+          <div class="addCart" @click.prevent="addtoCart()">加入購物車</div>
         </div>
+      </div>
+
+      <div class="mainIntro col-12">
+        <div class="col-12 d-flex justify-content-center paw">
+          <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+        </div>
+        <div class="introText">
+          <p>
+            地址：<span>{{ item.location }}</span>
+          </p>
+          <p>
+            電話：<span>{{ item.tel }}</span>
+          </p>
+          <div>
+            {{ item.content }}
+          </div>
+        </div>
+
         <div
-          class="d-flex"
-          style="
-            margin: 30px 10px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-          "
+          class="introPics"
+          v-for="(pics, index) in item.imagesUrl"
+          :key="index"
         >
-          <h5>NT.{{ donateItem.price }}</h5>
-          <h5 class="mx-5">/ {{ donateItem.unit }}</h5>
+          <img :src="pics" alt="" />
         </div>
-
-        <div class="input-group">
-          <button class="btn down" @click="btnMinus">-</button>
-          <input
-            type="text"
-            class="text-center quantity"
-            v-model="donateItem.num"
-          />
-          <button class="btn up" @click="btnPlus">+</button>
-        </div>
-        <div class="addCart" @click.prevent="addtoCart()">加入購物車</div>
-      </div>
-    </div>
-
-    <div class="mainIntro col-12">
-      <div class="col-12 d-flex justify-content-center paw">
-        <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
-      </div>
-      <div class="introText">
-        <p>地址：<span>{{item.location}}</span></p>
-        <p>電話：<span>{{item.tel}}</span></p>
-        <div>
-          {{ item.content }}
-        </div>
-      </div>
-
-      <div
-        class="introPics"
-        v-for="(pics, index) in item.imagesUrl"
-        :key="index"
-      >
-        <img :src="pics" alt="" />
       </div>
     </div>
   </div>
@@ -101,6 +112,7 @@ import emitter from '@/libs/emitter'
 export default {
   data () {
     return {
+      isLoading: false,
       products: [],
       // 所有後台商品
       shelterName: '',
@@ -125,9 +137,11 @@ export default {
       const vm = this
       vm.shelterName = this.$route.params.id
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
       this.$http.get(url).then((res) => {
-        this.products = res.data.products
-        this.products.forEach((item) => {
+        this.isLoading = false
+        vm.products = res.data.products
+        vm.products.forEach((item) => {
           // 從所有商品中將同一個愛園的資料抓出來
           if (item.category === vm.shelterName) {
             vm.sortProduct.push(item)
@@ -140,7 +154,7 @@ export default {
         // console.log(vm.donateItem)
         // console.log(vm.sortProduct[0])
         // 把有介紹資料的資料抓出來
-        this.sortProduct.forEach((item) => {
+        vm.sortProduct.forEach((item) => {
           if (item.introFile === 1) {
             vm.introProduct.push(item)
           }

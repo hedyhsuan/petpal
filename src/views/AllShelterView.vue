@@ -1,4 +1,6 @@
 <template>
+<div>
+  <loading :active="isLoading" />
   <div class="container">
     <div class="btn_group">
       <button class="button-38" role="button" @click="area = ''">
@@ -42,6 +44,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -49,6 +52,7 @@ export default {
   props: [],
   data () {
     return {
+      isLoading: false,
       products: [],
       selterIntro: [],
       area: ''
@@ -57,8 +61,10 @@ export default {
   methods: {
     getProducts () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
       const vm = this
       this.$http.get(url).then((res) => {
+        this.isLoading = false
         vm.products = res.data.products
         vm.products.forEach((item) => {
           if (item.introFile === 1) {

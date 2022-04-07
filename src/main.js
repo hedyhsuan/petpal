@@ -4,8 +4,12 @@ import 'bootstrap-icons/font/bootstrap-icons.scss'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import carousel from 'vue-owl-carousel'
+// Sweetalert2
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+// loading-oerlay
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
 import AllRules from '@vee-validate/rules'
@@ -32,9 +36,13 @@ app.use(router)
 app.use(VueAxios, axios)
 app.use(VueSweetalert2)
 
-// 數字轉換日期
+// carousel
 app.component('owl-carousel', carousel)
+// vee-validate
 app.component('Form', Form)
 app.component('Field', Field)
 app.component('ErrorMessage', ErrorMessage)
+// loading-overlay
+app.component('Loading', Loading)
+
 app.mount('#app')

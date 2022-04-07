@@ -1,4 +1,6 @@
 <template>
+<div>
+  <loading :active="isLoading" />
   <div class="intro_back">
     <div class="container">
       <div class="intro">
@@ -152,6 +154,7 @@
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -165,6 +168,7 @@ export default {
   },
   data () {
     return {
+      isLoading: false,
       products: [],
       selterIntro: []
     }
@@ -172,8 +176,10 @@ export default {
   methods: {
     getShelters () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
       const vm = this
       this.$http.get(url).then((res) => {
+        this.isLoading = false
         vm.products = res.data.products
         vm.products.forEach((item) => {
           if (item.introFile === 1) {

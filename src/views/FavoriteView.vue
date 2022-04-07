@@ -1,4 +1,6 @@
 <template>
+<div>
+  <loading :active="isLoading" />
   <div class="container">
     <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
     <CardCarousel
@@ -9,12 +11,14 @@
     ></CardCarousel>
   </div>
   </div>
+  </div>
 </template>
 <script>
 import CardCarousel from '../components/CardCarousel.vue'
 export default {
   data () {
     return {
+      isLoading: false,
       hearted: JSON.parse(localStorage.getItem('hearted')) || [],
       selterIntro: [],
       favorite: []
@@ -26,9 +30,11 @@ export default {
   methods: {
     getShelter () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
       const vm = this
       // 先取得各園的資料
       this.$http.get(url).then((res) => {
+        this.isLoading = false
         vm.products = res.data.products
         vm.products.forEach((item) => {
           if (item.introFile === 1) {
