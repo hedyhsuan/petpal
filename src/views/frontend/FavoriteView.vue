@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import CardCarousel from '../components/CardCarousel.vue'
+import CardCarousel from '@/components/CardCarousel.vue'
 export default {
   data () {
     return {

@@ -6,64 +6,60 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    component: () => import('../views/FrontView.vue'),
+    component: () => import('../views/frontend/FrontView.vue'),
     children: [
       {
         path: '',
-        component: () => import('../views/HomeView.vue')
+        component: () => import('../views/frontend/HomeView.vue')
       },
       {
         path: 'shelter',
-        component: () => import('../views/ShelterView.vue'),
+        component: () => import('../views/frontend/ShelterView.vue'),
         children: [
           {
             path: 'allselter',
-            component: () => import('../views/AllShelterView.vue')
+            component: () => import('../views/frontend/AllShelterView.vue')
           },
           {
             path: ':id',
-            component: () => import('../views/SingleView.vue')
+            component: () => import('../views/frontend/SingleView.vue')
           }
         ]
       },
 
       {
         path: 'cart',
-        component: () => import('../views/CartView.vue')
+        component: () => import('../views/frontend/CartView.vue')
       },
       {
         path: 'checkout',
-        component: () => import('../views/CheckoutView.vue')
+        component: () => import('../views/frontend/CheckoutView.vue')
       },
       {
         path: '/order/:id',
-        component: () => import('../views/OrderView.vue')
+        component: () => import('../views/frontend/OrderView.vue')
       },
       {
         path: 'favorite',
-        component: () => import('../views/FavoriteView.vue')
+        component: () => import('../views/frontend/FavoriteView.vue')
       }
     ]
   },
   {
     path: '/login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/frontend/Login.vue')
   },
   {
     path: '/admin',
-    component: () => import('../views/BackView.vue'),
+    component: () => import('../views/backend/BackView.vue'),
     children: [
       {
         path: 'products',
-        component: () => import('../views/AdminProducts.vue')
-      },
-      {
-        path: 'coupon',
-        component: () => import('../views/AdminCoupon.vue')
+        component: () => import('../views/backend/AdminProducts.vue')
       },
       {
         path: 'orders',
-        component: () => import('../views/AdminOrders.vue')
+        component: () => import('../views/backend/AdminOrders.vue')
       }
 
     ]

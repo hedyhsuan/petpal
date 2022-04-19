@@ -210,7 +210,7 @@
 
 <script>
 // import Carousel from '../components/Carousel.vue'
-import CardCarousel from '../components/CardCarousel.vue'
+import CardCarousel from '@/components/CardCarousel.vue'
 import AOS from 'aos'
 
 export default {
