@@ -1,121 +1,169 @@
 <template>
-<div>
-  <loading :active="isLoading" />
-  <div class="intro_back">
-    <div class="container">
-      <div class="intro">
-        <div class="inner row">
-          <div class="col-12 col-md-5 d-flex inner-left">
-            <div class="me-md-5">
-              <div>
-                <h1 class="text-white">浪。我照顧你</h1>
+  <div>
+    <loading :active="isLoading" />
+    <div class="intro_back">
+      <div class="container">
+        <div class="intro">
+          <div class="inner row">
+            <div class="col-12 col-md-5 d-flex inner-left">
+              <div class="me-md-5">
+                <div data-aos="fade-left" data-aos-duration="1300">
+                  <h1 class="text-white">浪。我照顧你</h1>
+                </div>
+                <p
+                  class="text-white mt-3"
+                  data-aos="fade-left"
+                  data-aos-duration="1800"
+                >
+                  全台有超過15萬隻流浪動物，儘管有無數盡心盡力的愛爸愛媽頃盡全力，收容照顧他們，我們仍需要
+                  您的支持，透過PetPal，我們希望把大家的愛心做數據化的管理，讓更多愛園都能安心的照顧等待
+                  收容的動物伙伴
+                </p>
               </div>
-              <p class="text-white mt-3">
-                全台有超過15萬隻流浪動物，儘管有無數盡心盡力的愛爸愛媽頃盡全力，收容照顧他們，我們仍需要
-                您的支持，透過PetPal，我們希望把大家的愛心做數據化的管理，讓更多愛園都能安心的照顧等待
-                收容的動物伙伴
-              </p>
             </div>
-          </div>
-          <div class="col-12 col-md-7 inner-right">
+            <div class="col-12 col-md-7 inner-right">
+              <img
+                class="inner_rightImg"
+                src="https://imgur.com/DpLwooV.jpg"
+                alt=""
+              />
+            </div>
             <img
-              class="inner_rightImg"
-              src="https://imgur.com/DpLwooV.jpg"
+              class="inner_mainImg"
+              src="https://imgur.com/TxR2XpW.jpg"
               alt=""
             />
           </div>
-          <img
-            class="inner_mainImg"
-            src="https://imgur.com/TxR2XpW.jpg"
-            alt=""
-          />
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="">
-    <div class="container">
-      <div class="sectionb">
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center paw">
-            <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
-          </div>
-          <!-- paw -->
-          <div class="text-center">
-            <h4 class=" mb-5">petpal在做什麼？</h4>
-          </div>
+    <div class="">
+      <div class="container">
+        <div class="sectionb">
+          <div class="row">
+            <div class="col-12 d-flex justify-content-center paw">
+              <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+            </div>
+            <!-- paw -->
+            <div class="text-center">
+              <h4
+                class="mb-5"
+                data-aos="fade-down"
+                data-aos-duration="1500"
+                data-aos-once="true"
+              >
+                petpal在做什麼？
+              </h4>
+            </div>
 
-          <div class="bg-white">
-            <div>
-              <div class="spirit_wrap row">
-                <div class="spirit_img col-md-6">
-                  <img
-                    class="w-100"
-                    src="https://imgur.com/SnpDfOS.jpg"
-                    alt=""
-                  />
-                </div>
+            <div class="bg-white">
+              <div>
+                <div class="spirit_wrap row">
+                  <div
+                    class="spirit_img col-md-6"
+                    data-aos="fade-left"
+                    data-aos-duration="1500"
+                  >
+                    <img
+                      class="w-100"
+                      src="https://imgur.com/SnpDfOS.jpg"
+                      alt=""
+                    />
+                  </div>
 
-                <div class="spirit_text_area col-md-6 p-4">
-                  <div>
-                    <div class="spirit_text">
-                      <h5 class="text-center">貓狗園的資助物資整合</h5>
-                    </div>
-                    <div class="p-md-4 p-2">
-                      <p>
-                        愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
-                      </p>
+                  <div class="spirit_text_area col-md-6 p-4">
+                    <div>
+                      <div
+                        class="spirit_text"
+                        data-aos="fade-right"
+                        data-aos-duration="1300"
+                      >
+                        <h5 class="text-center">貓狗園的資助物資整合</h5>
+                      </div>
+                      <div
+                        class="p-md-4 p-2"
+                        data-aos="fade-right"
+                        data-aos-duration="1500"
+                      >
+                        <p>
+                          愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <div class="spirit_wrap row flex-row-reverse">
-                <div class="spirit_img col-md-6">
-                  <img
-                    class="w-100"
-                    src="https://imgur.com/US9HVsB.jpg"
-                    alt=""
-                  />
-                </div>
+              <div>
+                <div class="spirit_wrap row flex-row-reverse">
+                  <div
+                    class="spirit_img col-md-6"
+                    data-aos="fade-left"
+                    data-aos-duration="1500"
+                  >
+                    <img
+                      class="w-100"
+                      src="https://imgur.com/US9HVsB.jpg"
+                      alt=""
+                    />
+                  </div>
 
-                <div class="spirit_text_area col-md-6 p-4">
-                  <div>
-                    <div class="spirit_text">
-                      <h5 class="text-center">專案人員定期訪視及紀錄</h5>
-                    </div>
-                    <div class="p-md-4 p-2">
-                      <p>
-                        我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
-                      </p>
+                  <div class="spirit_text_area col-md-6 p-4">
+                    <div>
+                      <div
+                        class="spirit_text"
+                        data-aos="fade-right"
+                        data-aos-duration="1300"
+                      >
+                        <h5 class="text-center">專案人員定期訪視及紀錄</h5>
+                      </div>
+                      <div
+                        class="p-md-4 p-2"
+                        data-aos="fade-right"
+                        data-aos-duration="1500"
+                      >
+                        <p>
+                          我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div>
-              <div class="spirit_wrap row">
-                <div class="spirit_img col-md-6">
-                  <img
-                    class="w-100"
-                    src="https://imgur.com/TMOZ4aO.jpg"
-                    alt=""
-                  />
-                </div>
+              <div>
+                <div class="spirit_wrap row">
+                  <div
+                    class="spirit_img col-md-6"
+                    data-aos="fade-left"
+                    data-aos-duration="1500"
+                  >
+                    <img
+                      class="w-100"
+                      src="https://imgur.com/TMOZ4aO.jpg"
+                      alt=""
+                    />
+                  </div>
 
-                <div class="spirit_text_area col-md-6 p-4">
-                  <div>
-                    <div class="spirit_text">
-                      <h5 class="text-center">平均物資</h5>
-                    </div>
-                    <div class="p-md-4 p-2">
-                      <p>
-                        將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
-                      </p>
+                  <div class="spirit_text_area col-md-6 p-4">
+                    <div>
+                      <div
+                        class="spirit_text"
+                        data-aos="fade-right"
+                        data-aos-duration="1300"
+                      >
+                        <h5 class="text-center">平均物資</h5>
+                      </div>
+                      <div
+                        class="p-md-4 p-2"
+                        data-aos="fade-right"
+                        data-aos-duration="1500"
+                      >
+                        <p>
+                          將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -123,43 +171,47 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-12 d-flex justify-content-center paw">
-        <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
-      </div>
-      <div class="action">
-        <div class="action_img"></div>
-        <div class="action_text_wrap">
-          <div class="action_text_area bg-light">
-            <h4 class="text-center mb-3">浪浪的困境</h4>
-            <div class="action_text">
-              <p>零撲殺的政策保障了浪浪的生命</p>
-              <p>隨之而來的是資源不足及糧食不足的狀況</p>
-              <p>我們需要你的幫忙</p>
-              <p>讓中途浪浪安心等家</p>
+        <div class="col-12 d-flex justify-content-center paw">
+          <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+        </div>
+        <div class="action">
+          <div class="action_img"></div>
+          <div class="action_text_wrap">
+            <div
+              class="action_text_area bg-light"
+              data-aos="fade-down"
+              data-aos-duration="1600"
+            >
+              <h4 class="text-center mb-3">浪浪的困境</h4>
+              <div class="action_text">
+                <p>零撲殺的政策保障了浪浪的生命</p>
+                <p>隨之而來的是資源不足及糧食不足的狀況</p>
+                <p>我們需要你的幫忙</p>
+                <p>讓中途浪浪安心等家</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="text"></div>
-      </div>
-      <!-- <Carousel :picsrc="selterIntro"></Carousel> -->
-      <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <CardCarousel
-          class="col"
-          v-for="(item, index) in selterIntro.slice(0, 3)"
-          :key="index"
-          :selectitem="item"
-        ></CardCarousel>
+          <div class="text"></div>
+        </div>
+        <!-- <Carousel :picsrc="selterIntro"></Carousel> -->
+        <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+          <CardCarousel
+            class="col"
+            v-for="(item, index) in selterIntro.slice(0, 3)"
+            :key="index"
+            :selectitem="item"
+          ></CardCarousel>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
 <script>
 // import Carousel from '../components/Carousel.vue'
 import CardCarousel from '../components/CardCarousel.vue'
+import AOS from 'aos'
 
 export default {
   components: {
@@ -192,6 +244,7 @@ export default {
   },
   mounted () {
     this.getShelters()
+    AOS.init({})
   }
 }
 </script>

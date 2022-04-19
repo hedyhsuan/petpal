@@ -10,6 +10,8 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 // loading-oerlay
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
+// importing AOS css style globally
+import 'aos/dist/aos.css'
 
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
 import AllRules from '@vee-validate/rules'

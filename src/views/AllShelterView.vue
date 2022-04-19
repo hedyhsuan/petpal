@@ -1,53 +1,58 @@
 <template>
-<div>
-  <loading :active="isLoading" />
-  <div class="container">
-    <div class="btn_group">
-      <button class="button-38" role="button" @click="area = ''">
-        全部愛園
-      </button>
-      <button class="button-38" role="button" @click="area = '北部'">
-        北部
-      </button>
-      <button class="button-38" role="button" @click="area = '中部'">
-        中部
-      </button>
-      <button class="button-38" role="button" @click="area = '南部'">
-        南部
-      </button>
-    </div>
-    <div class="mian">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+  <div>
+    <loading :active="isLoading" />
+    <div class="container">
+      <div class="btn_group" data-aos="fade-down" data-aos-duration="1500">
+        <button class="button-38" role="button" @click="area = ''">
+          全部愛園
+        </button>
+        <button class="button-38" role="button" @click="area = '北部'">
+          北部
+        </button>
+        <button class="button-38" role="button" @click="area = '中部'">
+          中部
+        </button>
+        <button class="button-38" role="button" @click="area = '南部'">
+          南部
+        </button>
+      </div>
+      <div class="mian">
         <div
-          class="product_item col-12"
-          v-for="shelter in sortIntro"
-          :key="shelter.id"
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3"
+          data-aos="fade-down"
+          data-aos-duration="2000"
         >
-          <div class="shelter_card">
-            <div class="topinfo">
-              <div class="left">
-                <span class="d-block mb-3 mx-3">{{ shelter.category }}</span>
+          <div
+            class="product_item col-12"
+            v-for="shelter in sortIntro"
+            :key="shelter.id"
+          >
+            <div class="shelter_card">
+              <div class="topinfo">
+                <div class="left">
+                  <span class="d-block mb-3 mx-3">{{ shelter.category }}</span>
+                </div>
+                <div class="right"></div>
               </div>
-              <div class="right"></div>
-            </div>
-            <div class="product_cover">
-              <a
-                href="#"
-                class="imglink"
-                @click.prevent="goShelter(shelter.category)"
-              >
-                <img :src="shelter.imageUrl" class="img-fluid" alt="" />
-              </a>
+              <div class="product_cover">
+                <a
+                  href="#"
+                  class="imglink"
+                  @click.prevent="goShelter(shelter.category)"
+                >
+                  <img :src="shelter.imageUrl" class="img-fluid" alt="" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
+import AOS from 'aos'
 export default {
   props: [],
   data () {
@@ -93,6 +98,7 @@ export default {
   },
   mounted () {
     this.getProducts()
+    AOS.init({})
   }
 }
 </script>

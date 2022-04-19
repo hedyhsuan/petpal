@@ -4,9 +4,11 @@
     <div class="banner_img">
       <img src="https://imgur.com/kaTljeN.jpg" alt="" />
     </div>
-        <div class="text_area">
-      <h4>捐出小愛心</h4>
-      <h5>陪浪浪等一個家</h5>
+        <div class="text_area" >
+      <h4 data-aos="fade-down"
+              data-aos-duration="1800">捐出小愛心</h4>
+      <h5 data-aos="fade-down"
+              data-aos-duration="1800">陪浪浪等一個家</h5>
     </div>
   </div>
 
