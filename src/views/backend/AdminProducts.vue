@@ -6,6 +6,7 @@
         <div class="col-md-12">
           <div class="text-end my-4">
             <button
+              type="button"
               class="btn btn-primary"
               style="color: white"
               @click="openModal('isNew')"
@@ -69,8 +70,6 @@
               @emit-pages="getProduct"
               > </pagination> -->
 
-          <!-- delproductmodal -->
-
           <del-product-modal
             ref="delProductModal"
             v-bind="tempProduct"
@@ -91,7 +90,6 @@
 </template>
 
 <script>
-// let delProductModal={};
 import productModal from '@/components/ProductModal'
 import delProductModal from '@/components/DelProductModal'
 export default {
@@ -121,12 +119,9 @@ export default {
           const { products } = res.data
           // 解構賦值
           this.products = products
-          // console.log(this.products)
           // this.pagination = pagination
         })
-        .catch((res) => {
-          console.log(res.data)
-        })
+        .catch((res) => {})
     },
     openModal (status, item) {
       const productCom = this.$refs.productModal
@@ -160,20 +155,9 @@ export default {
       }
     }
   },
-  // computed: {
-  //   sortItems: function () {
-  //     return sortKey(this.products, 'category')
-  //   }
-  // },
+
   mounted () {
     this.getProducts()
   }
 }
-// function sortKey (array, key) {
-//   return array.sort(function (a, b) {
-//     var x = a[key]
-//     var y = b[key]
-//     return x < y ? -1 : x > y ? 1 : 0
-//   })
-// }
 </script>

@@ -41,7 +41,6 @@ export default {
             vm.selterIntro.push(item)
           }
         })
-        console.log(vm.selterIntro)
         vm.selterIntro.forEach((item) => {
           vm.hearted.forEach((item2) => {
             if (item.category === item2) {
@@ -51,31 +50,9 @@ export default {
         })
       })
     }
-    // getFavotite () {
-    //   const vm = this
-    //   //   在各園中過濾出收藏商品
-    //   vm.selterIntro.forEach((item) => {
-    //     vm.hearted.forEach((item2) => {
-    //       if (item.category === item2) {
-    //         vm.favorite.push(item)
-    //       }
-    //     })
-    //   })
-    // }
   },
   watch: {
-    // selterIntro: function () {
-    //   const vm = this
-    //   vm.selterIntro.forEach((item) => {
-    //     console.log('1')
-    //     vm.hearted.forEach((item2) => {
-    //       if (item.category === item2) {
-    //         vm.favorite.push(item)
-    //       }
-    //     })
-    //   })
-    //   console.log(vm.vm.favorite)
-    // }
+
   },
   mounted () {
     this.getShelter()

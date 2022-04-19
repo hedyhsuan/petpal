@@ -47,7 +47,6 @@
 <script>
 import { Modal } from 'bootstrap'
 export default {
-  //   props: ['product'],
   props: ['title', 'id'],
   data () {
     return {

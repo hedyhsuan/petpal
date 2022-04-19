@@ -76,6 +76,7 @@
         </div>
         <div class="text-center mt-5" v-if="!order.is_paid">
           <button
+            type="button"
             class="btn btn-primary"
             style="color: white"
             @click="payorder"
@@ -113,7 +114,6 @@ export default {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/orders`
       this.$http.get(url).then((res) => {
         vm.orders = res.data
-        console.log(vm.orders)
       })
     },
     payorder () {
@@ -130,7 +130,6 @@ export default {
     this.orderId = this.$route.params.id
     // params後面的參數名稱要對應router的動態名稱
     this.getOrder()
-    // this.getOrders()
   }
 }
 </script>
@@ -161,8 +160,4 @@ export default {
 .active {
   background-color: #bfd7c3;
 }
-/* .order-detail {
-  max-width: 600px;
-  margin: 0px auto;
-} */
 </style>

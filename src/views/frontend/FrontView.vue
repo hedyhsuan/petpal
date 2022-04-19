@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="content">
-    <FrontNavBar></FrontNavBar>
+    <FrontNavBar/>
     <router-view></router-view>
     </div>
   </div>

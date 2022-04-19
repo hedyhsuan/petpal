@@ -1,6 +1,6 @@
 <template>
-  <BackNavBar></BackNavBar>
-  <ToastMessage></ToastMessage>
+  <BackNavBar/>
+  <ToastMessage/>
   <router-view v-if="checkSuccess"></router-view>
 
   <!-- 用checkSuccess來切換驗證與否 -->

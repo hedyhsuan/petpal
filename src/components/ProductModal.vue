@@ -119,13 +119,6 @@
                   <div class="mb-3 col-md-6 row">
                     <div class="col-md-6">
                       <label for="area" class="form-label">區域</label>
-                      <!-- <input
-                        id="area"
-                        v-model="item.area"
-                        type="text"
-                        class="form-control"
-                        placeholder="請輸入名稱"
-                      /> -->
                       <select
                         id="area"
                         class="form-control"
@@ -330,10 +323,6 @@ export default {
 
       this.$http[method](url, { data: this.item })
         .then((response) => {
-          // this.emitter.emit('push-message', {
-          //   style: 'success',
-          //   title: '更新完成'
-          // })
           alert(response.data.message)
           this.$emit('update')
           // 更新畫面資料

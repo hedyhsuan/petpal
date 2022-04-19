@@ -62,7 +62,6 @@ export default {
       // 如果首頁nav要即時更新我的最愛數字就要在這邊觸發祖父層更新
 
       this.hearted = JSON.parse(localStorage.getItem('hearted')) || []
-      // console.log(this.hearted.length)
     }
   },
   computed: {
@@ -75,7 +74,6 @@ export default {
     }
   },
   mounted () {
-    // console.log(this.hearted)
   }
 }
 </script>
@@ -85,10 +83,8 @@ export default {
   margin-bottom: 100px;
 }
 .card {
-  /* box-shadow: 24px 24px 80px rgba(0, 0, 0, 0.1); */
   border: 1px solid #ddd;
   border-radius: 10px;
-  /* background-color: rgba(0, 0, 0, 0); */
   width: 100%;
   padding: 10px;
   margin-bottom: 30px;
@@ -119,14 +115,11 @@ export default {
   border-radius: 10px;
 }
 .button-8 {
-  /* background-color: #e1ecf4; */
   background-color: #dfe6e2;
   border-radius: 3px;
-  /* border: 1px solid #7aa7c7; */
   border: 1px solid #849387;
   box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
   box-sizing: border-box;
-  /* color: #39739d; */
   color: #5d8964;
   cursor: pointer;
   display: inline-block;
@@ -147,21 +140,17 @@ export default {
 
 .button-8:hover,
 .button-8:focus {
-  /* background-color: #b3d3ea; */
   background-color: #bfd7c3;
-  /* color: #2c5777; */
   color: #3c6042;
 }
 
 .button-8:focus {
-  /* box-shadow: 0 0 0 4px rgba(0, 149, 255, .15); */
   box-shadow: 0 0 0 4px rgba(0, 255, 30, 0.15);
 }
 
 .button-8:active {
   background-color: #a0c7e4;
   box-shadow: none;
-  /* color: #2c5777; */
   color: #3c6042;
 }
 

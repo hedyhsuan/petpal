@@ -3,16 +3,16 @@
     <loading :active="isLoading" />
     <div class="container">
       <div class="btn_group" data-aos="fade-down" data-aos-duration="1500">
-        <button class="button-38" role="button" @click="area = ''">
+        <button type="button" class="button-38" role="button" @click="area = ''">
           全部愛園
         </button>
-        <button class="button-38" role="button" @click="area = '北部'">
+        <button type="button" class="button-38" role="button" @click="area = '北部'">
           北部
         </button>
-        <button class="button-38" role="button" @click="area = '中部'">
+        <button type="button" class="button-38" role="button" @click="area = '中部'">
           中部
         </button>
-        <button class="button-38" role="button" @click="area = '南部'">
+        <button type="button" class="button-38" role="button" @click="area = '南部'">
           南部
         </button>
       </div>

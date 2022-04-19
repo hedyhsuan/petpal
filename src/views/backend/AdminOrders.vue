@@ -26,6 +26,7 @@
             <td v-else>未付款</td>
             <td>
               <button
+                type="button"
                 class="btn btn-primary"
                 style="color: white"
                 @click="getOrder(item)"
@@ -60,7 +61,6 @@ export default {
       vm.isLoading = true
       this.$http.get(url).then((response) => {
         vm.isLoading = false
-        // vm.data=response.data;
         vm.orders = response.data.orders
         vm.pagination = response.data.pagination
       })

@@ -28,6 +28,7 @@
             <div class="mt-3">
               <div class="d-flex justify-content-between">
                 <button
+                  type="button"
                   class="button-38"
                   :class="{ active: activeName == item.title }"
                   role="button"
@@ -67,13 +68,13 @@
           </div>
 
           <div class="input-group">
-            <button class="btn down" @click="btnMinus">-</button>
+            <button type="button" class="btn down" @click="btnMinus">-</button>
             <input
               type="text"
               class="text-center quantity"
               v-model="donateItem.num"
             />
-            <button class="btn up" @click="btnPlus">+</button>
+            <button type="button" class="btn up" @click="btnPlus">+</button>
           </div>
           <div class="addCart" @click.prevent="addtoCart()">加入購物車</div>
         </div>
@@ -129,7 +130,6 @@ export default {
       index: '',
       orders: []
       // 所有訂單
-      // cart: []
     }
   },
   methods: {
@@ -151,8 +151,6 @@ export default {
             // 先把第一筆資料撈出來顯示畫面上的價錢/單位
           }
         })
-        // console.log(vm.donateItem)
-        // console.log(vm.sortProduct[0])
         // 把有介紹資料的資料抓出來
         vm.sortProduct.forEach((item) => {
           if (item.introFile === 1) {
@@ -202,9 +200,8 @@ export default {
         qty: this.donateItem.num
       }
       this.$http.post(url, { data: item }).then((res) => {
-        // 更新上方小購物車數字
         emitter.emit('get-cart')
-
+        // 更新上方小購物車數字
         // sweet alert
         const Toast = this.$swal.mixin({
           toast: true,
@@ -224,13 +221,6 @@ export default {
         })
       })
     }
-    // getCart () {
-    //   const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
-    //   const vm = this
-    //   this.$http.get(url).then((res) => {
-    //     vm.cart = res.data.data.carts
-    //   })
-    // }
   },
   computed: {
     changeIcon () {
@@ -284,8 +274,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* top: 10px; */
-  /* right: 26px; */
   color: rgb(189, 189, 189);
   cursor: pointer;
 }

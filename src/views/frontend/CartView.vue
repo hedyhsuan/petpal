@@ -90,7 +90,6 @@ export default {
         this.isLoading = false
         vm.data = res.data.data
         vm.cartData = res.data.data.carts
-        // console.log(vm.data)
       })
     },
     updateCart (id, qty) {
@@ -100,11 +99,9 @@ export default {
         qty: qty
       }
       this.$http.put(url, { data: item }).then((res) => {
-        // this.getCart()
-        // 更新上方小購物車數量
         // 同品項不累加
-        emitter.emit('update-cart')
-        // 因為可能會同時在購物車頁面，所以更新發送更新至該頁面
+        emitter.emit('get-cart')
+        // 更新上方小購物車內容
 
         // sweet alert
         const Toast = this.$swal.mixin({
@@ -151,11 +148,8 @@ export default {
       })
     },
 
-    // 從商品列表增加進購物車
-
     deleteAll () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`
-      // const url = 'https://vue3-course-api.hexschool.io/v2/api/houhsuan/carts'
       this.$http
         .delete(url)
         .then((res) => {
@@ -173,10 +167,6 @@ export default {
 
   mounted () {
     this.getCart()
-    emitter.on('update-cart', () => {
-      this.getCart()
-      // 當監聽到get-cart就觸發
-    })
   }
 }
 </script>

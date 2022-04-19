@@ -4,6 +4,13 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // 可以分開寫也可以寫在下面
 
 const routes = [
+  // TODO
+  // 加入下面指令就會跳錯，無法開啟畫面
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/'
+    // 如果進入未定義的頁面就重導到首頁
+  },
   {
     path: '/',
     component: () => import('../views/frontend/FrontView.vue'),
@@ -61,7 +68,6 @@ const routes = [
         path: 'orders',
         component: () => import('../views/backend/AdminOrders.vue')
       }
-
     ]
   }
 ]

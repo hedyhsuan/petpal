@@ -172,19 +172,15 @@ export default {
         this.isLoading = false
         vm.data = res.data.data
         vm.cartData = res.data.data.carts
-        // console.log(vm.data)
       })
     },
     createOrder () {
       const order = this.form
-      // console.log(order)
-
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`
 
       this.$http.post(url, { data: order }).then((res) => {
-        // alert(res.data.message)
         emitter.emit('get-cart')
-        // 觸發上方小購物車更新
+        // 觸發上方小購物車重置為0
         this.$router.push(`/order/${res.data.orderId}`)
       })
     }

@@ -52,9 +52,7 @@ export default {
   // 接收實體資料庫資料
   methods: {
     insideEvent (item) {
-      console.log('有按道')
       this.$emit('switch-page', item)
-      // console.log(item);
       // $emit(‘自定義事件’,要帶入的資料),透過此來觸發重新整理頁面的實體事件getProduct
     }
   }

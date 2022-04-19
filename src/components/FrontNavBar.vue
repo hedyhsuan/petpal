@@ -179,37 +179,20 @@ export default {
       this.$http.get(url).then((res) => {
         this.cartData = res.data.data
         this.carts = res.data.data.carts
-        // console.log(this.cartData)
       })
     },
     getHearted () {
       this.hearted = JSON.parse(localStorage.getItem('hearted')) || []
       // 每次觸發都要重新撈一次vm.hearted來做更新
-      // 若local端還沒有任何資料則vm.hearted.length程式會判斷為null.length並跳錯
-      // 因此一定要加|| []
+      // 加|| []若local端還沒有任何資料則vm.hearted.length程式會判斷為null.length並跳錯
       this.heartQuantity = this.hearted.length
-    },
-    updateCart (id, qty) {
-      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
-      const item = {
-        product_id: id,
-        qty: qty
-      }
-      this.$http.put(url, { data: item }).then((res) => {
-        // this.getCart()
-        // 更新上方小購物車數量
-        // 同品項不累加
-        emitter.emit('update-cart')
-        // 因為可能會同時在購物車頁面，所以更新發送更新至該頁面
-      })
     },
     delProduct (id, category) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
       this.$http.delete(url).then((res) => {
         emitter.emit('update-cart')
-        // 因為可能會同時在購物車頁面，所以更新發送更新至該頁面
+        // 更新上方小購物車
         this.getCart()
-        // 更新上方小購物車數量
 
         // sweet alert
         const Toast = this.$swal.mixin({

@@ -28,7 +28,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click.prevent="logout()">登出</a>
-            <!-- 如果沒有要去的頁面就不能用router-link會跳錯 -->
           </li>
         </ul>
       </div>

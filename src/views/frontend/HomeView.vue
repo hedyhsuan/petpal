@@ -194,7 +194,6 @@
 
           <div class="text"></div>
         </div>
-        <!-- <Carousel :picsrc="selterIntro"></Carousel> -->
         <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
           <CardCarousel
             class="col"
@@ -209,13 +208,11 @@
 </template>
 
 <script>
-// import Carousel from '../components/Carousel.vue'
 import CardCarousel from '@/components/CardCarousel.vue'
 import AOS from 'aos'
 
 export default {
   components: {
-    // Carousel,
     CardCarousel
   },
   data () {
@@ -238,7 +235,6 @@ export default {
             vm.selterIntro.push(item)
           }
         })
-        // console.log(vm.selterIntro)
       })
     }
   },
@@ -261,7 +257,6 @@ export default {
 }
 .inner {
   min-height: 600px;
-  /* display: flex; */
   position: relative;
 }
 .inner_mainImg {
@@ -307,11 +302,7 @@ export default {
 .paw {
   margin-bottom: 100px;
 }
-/* @media (max-width: 768px) {
-  .paw {
-    margin: 10px 0;
-  }
-} */
+
 .paw img {
   width: 35px;
 }
@@ -321,7 +312,6 @@ export default {
   overflow: hidden;
 }
 .sectionb_left {
-  /* background-image: url(https://imgur.com/DpLwooV.jpg); */
   position: relative;
 }
 .sectionb_left img {

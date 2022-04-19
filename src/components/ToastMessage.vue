@@ -1,5 +1,5 @@
 <template>
-  <!-- 如果要碟用toast就以toast-container包覆並定位 -->
+  <!-- 如果要疊用toast就以toast-container包覆並定位 -->
   <!-- 因為要確保它不會被認何物件檔住所以給它一個z-index:1500 -->
   <div
     class="toast-container position-fixed pe-3 top-0 end-0"
