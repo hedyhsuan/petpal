@@ -19,19 +19,50 @@
                   您的支持，透過PetPal，我們希望把大家的愛心做數據化的管理，讓更多愛園都能安心的照顧等待
                   收容的動物伙伴
                 </p>
+                <!-- <div class="contactus">
+                  <h5>訂閱我們</h5>
+                  <p>獲得最新的愛園情報</p>
+                  <div class="input-group mb-3">
+                    <label for="email"></label>
+                    <input
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="請輸入email"
+                      aria-label="Example text with button addon"
+                      aria-describedby="button-addon1"
+                    />
+                    <button
+                      class="btn btn-secondary"
+                      type="button"
+                      id="button-addon1"
+                    >
+                      訂閱
+                    </button>
+                  </div>
+                </div> -->
+                <div
+                  class="text-white mt-5"
+                  data-aos="fade-down"
+                  data-aos-duration="1700"
+                >
+                  <h5>
+                    <i class="bi bi-chevron-double-down"></i>下滑來看看我們
+                  </h5>
+                </div>
               </div>
             </div>
             <div class="col-12 col-md-7 inner-right">
               <img
                 class="inner_rightImg"
                 src="https://imgur.com/DpLwooV.jpg"
-                alt=""
+                alt="黃色背景"
               />
             </div>
             <img
               class="inner_mainImg"
               src="https://imgur.com/TxR2XpW.jpg"
-              alt=""
+              alt="狗狗圖片"
             />
           </div>
         </div>
@@ -43,7 +74,7 @@
         <div class="sectionb">
           <div class="row">
             <div class="col-12 d-flex justify-content-center paw">
-              <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+              <img src="https://imgur.com/v6RZO4g.jpg" alt="狗掌印" />
             </div>
             <!-- paw -->
             <div class="text-center">
@@ -68,7 +99,7 @@
                     <img
                       class="w-100"
                       src="https://imgur.com/SnpDfOS.jpg"
-                      alt=""
+                      alt="貓狗園的資助物資整合"
                     />
                   </div>
 
@@ -79,16 +110,26 @@
                         data-aos="fade-right"
                         data-aos-duration="1300"
                       >
-                        <h5 class="text-center">貓狗園的資助物資整合</h5>
+                        <div class="text-center my-3">
+                          <i class="fs-1 bi bi-file-ruled"></i>
+                        </div>
+                        <h5 class="text-center">物資需求整合</h5>
                       </div>
                       <div
-                        class="p-md-4 p-2"
+                        class="p-md-3 p-2"
                         data-aos="fade-right"
                         data-aos-duration="1500"
                       >
                         <p>
                           愛園最常面臨的狀況往往是人力的不足，捐贈物資時而過剩時而潰乏，我們將物資的捐贈整合，並密切的跟愛園做更新，以確保每個愛園都有足夠的物資
                         </p>
+                      </div>
+                      <div class="spirit_text_img_1 ml-auto">
+                        <img
+                          class="w-100"
+                          src="https://imgur.com/GacoAdy.jpg"
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -103,9 +144,9 @@
                     data-aos-duration="1500"
                   >
                     <img
-                      class="w-100"
-                      src="https://imgur.com/US9HVsB.jpg"
-                      alt=""
+                      class=""
+                      src="https://imgur.com/1JIlzWn.jpg"
+                      alt="專案人員定期訪視及紀錄"
                     />
                   </div>
 
@@ -116,16 +157,27 @@
                         data-aos="fade-right"
                         data-aos-duration="1300"
                       >
+                        <div class="text-center my-3">
+                          <i class="fs-1 bi bi-clipboard-check"></i>
+                        </div>
+
                         <h5 class="text-center">專案人員定期訪視及紀錄</h5>
                       </div>
                       <div
-                        class="p-md-4 p-2"
+                        class="p-md-3 p-2"
                         data-aos="fade-right"
                         data-aos-duration="1500"
                       >
                         <p>
                           我們跟每一個合作的愛園都有專案人員的紀錄及訪視，除了確認環境的狀況之外，也會依動物入住的數量給予建議，數量如果超過負擔就安排轉往其它愛圓，維護動物們的生活品質
                         </p>
+                      </div>
+                      <div class="spirit_text_img_2">
+                        <img
+                          class="w-100"
+                          src="https://imgur.com/l1uvkBh.jpg"
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -142,7 +194,7 @@
                     <img
                       class="w-100"
                       src="https://imgur.com/TMOZ4aO.jpg"
-                      alt=""
+                      alt="平均物資"
                     />
                   </div>
 
@@ -153,16 +205,26 @@
                         data-aos="fade-right"
                         data-aos-duration="1300"
                       >
+                        <div class="text-center my-3">
+                          <i class="fs-1 bi bi-box2-heart"></i>
+                        </div>
                         <h5 class="text-center">平均物資</h5>
                       </div>
                       <div
-                        class="p-md-4 p-2"
+                        class="p-md-3 p-2"
                         data-aos="fade-right"
                         data-aos-duration="1500"
                       >
                         <p>
                           將物資的狀況透明化，讓所有捐贈者都能在捐贈時知道哪一個愛園目前還需要幫助，也減少過剩屯放的問題
                         </p>
+                      </div>
+                      <div class="spirit_text_img_3">
+                        <img
+                          class="w-100"
+                          src="https://imgur.com/9DJ8Eau.jpg"
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -172,7 +234,7 @@
           </div>
         </div>
         <div class="col-12 d-flex justify-content-center paw">
-          <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+          <img src="https://imgur.com/v6RZO4g.jpg" alt="狗掌印" />
         </div>
         <div class="action">
           <div class="action_img"></div>
@@ -275,6 +337,11 @@ export default {
     width: 100%;
   }
 }
+.contactus {
+  margin-top: 80px;
+  /* background: rgba(253, 251, 251,.6); */
+  color: white;
+}
 .inner-left {
   margin-top: 10%;
   /* display: flex;
@@ -334,13 +401,39 @@ export default {
 .spirit_wrap > div {
   padding: 0;
 }
+.spirit_img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
 .spirit_text_area {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f9f5d7;
+  position: relative;
 }
 .spirit_text {
   position: relative;
+}
+.spirit_text_img_1 {
+  width: 15%;
+  margin-left: auto;
+}
+.spirit_text_img_2 {
+  /* position: absolute;
+  left: 50px;
+  bottom: 0; */
+  width: 12%;
+  margin-left: auto;
+}
+.spirit_text_img_3 {
+  /* position: absolute;
+  right: 35px;
+  bottom: 0; */
+  width: 20%;
+  margin-left: auto;
 }
 
 .spirits p {
