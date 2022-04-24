@@ -105,7 +105,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/shelter/allselter">
+            <router-link
+              class="nav-link"
+              to="/shelter/allselter"
+              @click="hideDropdown"
+            >
               <span>
                 <i class="bi bi-file-earmark-image"></i>
                 愛園一覽</span
@@ -113,7 +117,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/favorite">
+            <router-link class="nav-link" to="/favorite" @click="hideDropdown">
               <span>
                 <i class="bi bi-suit-heart-fill"></i>
                 收藏</span
@@ -128,6 +132,7 @@
 
 <script>
 import emitter from '@/libs/emitter'
+import { Collapse } from 'bootstrap'
 
 export default {
   data () {
@@ -212,6 +217,13 @@ export default {
           title: '已更新購物車'
         })
       })
+    },
+    hideDropdown () {
+      const Dropdown = document.getElementById('navbarSupportedContent')
+      const myDropdown = new Collapse(Dropdown, {
+        toggle: false
+      })
+      myDropdown.hide()
     }
   },
 
