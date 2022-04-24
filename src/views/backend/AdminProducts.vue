@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active="isLoading" />
     <div class="container">
       <div class="py-3">
         <h3>產品列表</h3>
@@ -98,6 +99,7 @@ export default {
       products: [],
       pagination: {},
       isNew: 'true',
+      isLoading: false,
       tempProduct: {
         imagesUrl: [],
         requiredQty: '',
@@ -113,9 +115,11 @@ export default {
   methods: {
     getProducts () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products/all`
+      this.isLoading = true
       this.$http
         .get(url)
         .then((res) => {
+          this.isLoading = false
           const { products } = res.data
           // 解構賦值
           this.products = products
