@@ -67,7 +67,7 @@
                   <th>付款狀態</th>
                   <td>
                     <span v-if="!order.is_paid">尚未付款</span>
-                    <span v-else class="text-success">付款完成</span>
+                    <span v-else class="text-success h6">付款完成</span>
                   </td>
                 </tr>
               </tbody>
@@ -82,6 +82,13 @@
             @click="payorder"
           >
             確認付款去
+          </button>
+        </div>
+        <div class="text-center mt-5" v-if="order.is_paid">
+          <button type="button" class="btn btn-primary" style="color: white">
+            <router-link to="/shelter/allselter" FavoriteView.vue
+              >再去逛逛</router-link
+            >
           </button>
         </div>
       </div>
