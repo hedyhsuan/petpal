@@ -31,6 +31,9 @@
             <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
               登入
             </button>
+            <div class="mt-2">
+            <span v-if="!signin" class="text-danger font-weight-bold mt-2">帳號或密碼錯誤</span>
+            </div>
           </form>
         </div>
       </div>
@@ -43,6 +46,7 @@
 export default {
   data () {
     return {
+      signin: true,
       user: {
         username: '',
         password: ''
@@ -55,6 +59,7 @@ export default {
       this.$http
         .post(url, this.user)
         .then((response) => {
+          this.signin = true
           const { token, expired } = response.data
           // 取得response中的token,expired
           document.cookie = `hexToken=${token};expires=${new Date(expired)};`
@@ -63,7 +68,7 @@ export default {
           this.$router.push('/admin/products')
         })
         .catch(() => {
-          alert('帳號或密碼不正確')
+          this.signin = false
           this.user = {}
           // 登入失敗就將欄位清空
         })
