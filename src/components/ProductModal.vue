@@ -35,7 +35,7 @@
                     v-model="item.imageUrl"
                     placeholder="請輸入圖片連結"
                   />
-                  <img :src="item.imageUrl" alt="" class="mt-3" />
+                  <img :src="item.imageUrl" alt="中途之家主圖" class="mt-3" />
                 </div>
                 <!--   label for/input id 會是對應在一起的-->
 
@@ -57,7 +57,7 @@
                         v-model="item.imagesUrl[key]"
                       />
                     </div>
-                    <img :src="item.imagesUrl[key]" alt="" class="mt-3" />
+                    <img :src="item.imagesUrl[key]" alt="中途之家圖片" class="mt-3" />
                   </div>
                 </div>
 
