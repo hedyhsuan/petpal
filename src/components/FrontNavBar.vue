@@ -3,27 +3,24 @@
     <div class="container">
       <router-link class="navbar-brand" to="/">PetPal</router-link>
       <!-- 小購物車 -->
-      <div
-        class="cart dropdown ms-auto order-lg-3"
-        style="cursor: pointer"
-        @click="gocart()"
-      >
+      <div class="cart dropdown ms-auto order-lg-3" style="cursor: pointer">
         <div
           class=""
           id="cartDropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          <div class="d-flex">
+          <div @click="gocart()">
             <div class="position-relative me-md-2">
               <i class="bi bi-cart-fill"></i>
               <span
+                :class="{ 'd-none': !carts.length }"
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
               >
                 {{ carts.length }}</span
               >
             </div>
-            <span class="d-none d-md-block">購物車</span>
+            <span class="d-none d-md-block"></span>
           </div>
         </div>
 
@@ -53,7 +50,16 @@
                       style="font-size: 14px"
                     >
                       <span>數量：</span>
-                      <span>{{ item.qty }}</span>
+                      <!-- <span>{{ item.qty }}</span> -->
+                      <input
+                        style="width: 100px; height: 30px"
+                        :disabled="disabled === true"
+                        min="1"
+                        type="number"
+                        class="form-control"
+                        v-model.number="item.qty"
+                        @change="updateCart(item.id, item.qty)"
+                      />
                     </div>
                   </div>
                   <div
@@ -64,17 +70,21 @@
                   </div>
                 </li>
               </ul>
-              <div class="text-end">
+              <div v-if="cartData.total > 0" class="text-end">
                 <p>
                   小計 <span>{{ cartData.total }}</span> 元
                 </p>
               </div>
+              <div v-else class="text-center">
+                <h6>購物車內尚無商品</h6>
+              </div>
             </div>
+
             <div
               class="cart-body overflow-auto h-100 p-2"
               style="max-height: 70vh"
             >
-              <router-link to="/cart">結帳</router-link>
+              <router-link to="/checkout">結帳</router-link>
             </div>
           </div>
         </div>
@@ -112,49 +122,6 @@
           </li>
         </ul>
       </div>
-      <!-- 漢堡按鈕dropdown -->
-
-      <!-- <div class="mx-2">
-        <a href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-bookmark-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"
-            />
-          </svg>
-        </a>
-        <span class="mx-2">收藏</span>
-      </div> -->
-
-      <!-- <div class="d-flex mx-2">
-        <a href="#" class="position-relative">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-cart-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-            />
-          </svg>
-          <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-          >
-            {{ cartData.carts.length }}
-            <span class="visually-hidden">unread messages</span>
-          </span>
-        </a>
-        <span class="mx-2">購物車</span>
-      </div> -->
     </div>
   </nav>
 </template>
@@ -169,7 +136,8 @@ export default {
       cartData: {},
       carts: {},
       hearted: [],
-      heartQuantity: ''
+      heartQuantity: '',
+      disabled: false
     }
   },
   methods: {
@@ -215,6 +183,35 @@ export default {
     },
     gocart () {
       this.$router.push('/cart')
+    },
+    updateCart (id, qty) {
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
+      this.disabled = true
+      const item = {
+        product_id: id,
+        qty: qty
+      }
+      this.$http.put(url, { data: item }).then((res) => {
+        this.disabled = false
+        this.getCart()
+        // sweet alert
+        const Toast = this.$swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: false,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', this.$swal.stopTimer)
+            toast.addEventListener('mouseleave', this.$swal.resumeTimer)
+          }
+        })
+
+        Toast.fire({
+          icon: 'success',
+          title: '已更新購物車'
+        })
+      })
     }
   },
 

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <router-link class="navbar-brand" to="/admin">PetPal</router-link>
+      <router-link class="navbar-brand" to="/admin/products">PetPal</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -44,11 +44,16 @@ export default {
     logout () {
       const api = `${process.env.VUE_APP_API}logout`
       const vm = this
-      this.$http.post(api).then((response) => {
-        if (response.data.success) {
-          vm.$router.push('/login')
-        }
-      })
+      this.$http
+        .post(api)
+        .then((response) => {
+          if (response.data.success) {
+            vm.$router.push('/login')
+          }
+        })
+        .catch((err) => {
+          alert(err)
+        })
     }
   }
 }
