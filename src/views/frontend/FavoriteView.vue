@@ -1,16 +1,31 @@
 <template>
-<div>
-  <loading :active="isLoading" />
-  <div class="container">
-    <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-    <CardCarousel
-      class="col"
-      v-for="(item, index) in favorite"
-      :key="index"
-      :selectitem="item"
-    ></CardCarousel>
-  </div>
-  </div>
+  <div>
+    <loading :active="isLoading" />
+    <div class="container">
+      <div class="promote row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <div v-if="favorite.length === 0" class="text-center mx-auto">
+          <h5>還沒有任何收藏喔</h5>
+          <button
+            type="button"
+            class="btn btn-primary mt-3"
+            style="color: white"
+          >
+            <router-link to="/shelter/allselter" FavoriteView.vue
+              >來去逛逛</router-link
+            >
+          </button>
+          <div class="mt-5">
+            <img src="https://imgur.com/RPJ2acE.jpg" alt="" />
+          </div>
+        </div>
+        <CardCarousel
+          class="col"
+          v-for="(item, index) in favorite"
+          :key="index"
+          :selectitem="item"
+        ></CardCarousel>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -51,17 +66,14 @@ export default {
       })
     }
   },
-  watch: {
-
-  },
+  watch: {},
   mounted () {
     this.getShelter()
   }
 }
 </script>
 <style scoped>
-.promote{
-    margin-top:100px ;
+.promote {
+  margin-top: 100px;
 }
-
 </style>
