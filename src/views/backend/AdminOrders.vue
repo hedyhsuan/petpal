@@ -1,4 +1,5 @@
 <template>
+  <loading :active="isLoading" />
   <div class="container">
     <div class="py-3">
       <h3>訂單管理</h3>
@@ -29,41 +30,89 @@
                 type="button"
                 class="btn btn-primary"
                 style="color: white"
-                @click="getOrder(item)"
+                @click="openModal(item)"
               >
                 訂單詳情
+              </button>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm"
+                @click="openDel(item)"
+              >
+                <i class="bi bi-trash-fill"></i>
               </button>
             </td>
           </tr>
         </tbody>
       </table>
       <pagination :page="pagination" @switch-page="getOrders"> </pagination>
+      <order-modal
+        ref="orderModal"
+        :order="tempOrder"
+        @update="getOrders"
+      ></order-modal>
+      <del-order-modal
+        ref="delOrderModal"
+        :delItem="delItem"
+        @update="getOrders"
+      ></del-order-modal>
     </div>
   </div>
 </template>
 
 <script>
-import pagination from '../../components/pagination.vue'
+import pagination from '@/components/pagination.vue'
+import orderModal from '@/components/OrderModal.vue'
+import delOrderModal from '@/components/DelOrderModal.vue'
+
 export default {
   components: {
-    pagination
+    pagination,
+    orderModal,
+    delOrderModal
   },
   data () {
     return {
       orders: [],
-      pagination: {}
+      pagination: {},
+      isLoading: false,
+      tempOrder: {},
+      delItem: {}
     }
   },
   methods: {
     getOrders (page = 1) {
+      this.isLoading = true
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       const vm = this
-      vm.isLoading = true
       this.$http.get(url).then((response) => {
         vm.isLoading = false
         vm.orders = response.data.orders
         vm.pagination = response.data.pagination
       })
+    },
+    openDel (item) {
+      const delOrderCom = this.$refs.delOrderModal
+      this.delItem = JSON.parse(JSON.stringify(item))
+      console.log(this.delItem)
+      delOrderCom.openModal()
+    },
+    delOrder (id) {
+      this.isLoading = true
+      const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${id}`
+      const vm = this
+      this.$http.delete(url).then((response) => {
+        vm.isLoading = false
+        vm.orders = response.data.orders
+        vm.pagination = response.data.pagination
+      })
+    },
+    openModal (item) {
+      const orderCom = this.$refs.orderModal
+      this.tempOrder = JSON.parse(JSON.stringify(item))
+      orderCom.openModal()
     }
   },
   mounted () {

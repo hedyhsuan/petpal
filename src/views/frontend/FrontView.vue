@@ -10,6 +10,7 @@
     <div class="my-4">
       <p style="margin: 0">僅供學習使用 無商業用途 <span>2022</span></p>
     </div>
+    <img src="https://imgur.com/kVMAQk8.jpg" alt="">
   </footer>
 
 </template>
@@ -38,5 +39,18 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+footer>img{
+  width: 20%;
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+}
+@media (max-width: 991px) {
+  footer>img {
+    right: 20px;
+    width: 30%;
+  }
 }
 </style>

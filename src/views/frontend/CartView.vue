@@ -15,7 +15,7 @@
                 <h5 class="">購物清單</h5>
                 <table id="checkoutList" class="w-100 mt-4">
                   <tbody>
-                    <tr v-for="item in cartData" :key="item.id">
+                    <tr v-for="item in cartData" :key="item.id" >
                       <td width="80">
                         <button
                           type="button"
@@ -36,6 +36,7 @@
                       <!-- <td>{{item.price|currency}}</td> -->
                       <td class="text-center" width="100">
                         <input
+                          :disabled="disabled === true"
                           min="1"
                           type="number"
                           class="form-control"
@@ -49,16 +50,22 @@
                   </tbody>
                 </table>
               </div>
-              <div class="col-12 col-lg-5 total">
-                <div class="text-end">
-                  總金額：
-                  <span class="h5">NT.{{ data.total }}</span>
-                </div>
-                <div class="addCart" @click.prevent="Checkout()">結帳去</div>
+              <div class="col-12 col-lg-5 total"></div>
+
+              <div class="text-end">
+                總金額：
+                <span class="h5">NT.{{ data.total }}</span>
               </div>
+
+              <div class="addCart" @click="Checkout()">結帳去</div>
             </div>
             <div v-else class="text-center">
               <h5>購物車內尚無商品</h5>
+              <router-link
+                class="btn btn-primary btn-md mt-3"
+                to="/shelter/allselter"
+                >逛逛愛園</router-link
+              >
             </div>
           </div>
         </div>
@@ -74,6 +81,7 @@ export default {
   data () {
     return {
       isLoading: false,
+      disabled: false,
       data: [],
       cartData: [],
       products: [],
@@ -85,6 +93,7 @@ export default {
     getCart () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
+
       const vm = this
       this.$http.get(url).then((res) => {
         this.isLoading = false
@@ -94,12 +103,14 @@ export default {
     },
     updateCart (id, qty) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`
+      this.disabled = true
       const item = {
         product_id: id,
         qty: qty
       }
       this.$http.put(url, { data: item }).then((res) => {
-        // 同品項不累加
+        this.disabled = false
+        this.getCart()
         emitter.emit('get-cart')
         // 更新上方小購物車內容
 
@@ -201,12 +212,13 @@ export default {
   background-color: #bfd7c3;
 }
 .addCart {
-  margin: 10px 0;
-  padding: 10px 0;
+  width: 50%;
+  margin: 50px 50% 10px;
+  padding: 10px 0px;
   text-align: center;
   background-color: #bfd7c3;
   color: #3c6042;
-  color: #000;
+  /* color: #000; */
   transition: all 0.2s ease-in;
   cursor: pointer;
 }

@@ -2,7 +2,7 @@
   <div class="shelter_banner container">
 
     <div class="banner_img">
-      <img src="https://imgur.com/kaTljeN.jpg" alt="" />
+      <img src="https://imgur.com/kaTljeN.jpg" alt="討摸的浪貓" />
     </div>
         <div class="text_area" >
       <h4 data-aos="fade-down"

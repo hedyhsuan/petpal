@@ -1,6 +1,6 @@
 <template>
-  <BackNavBar/>
-  <ToastMessage/>
+  <BackNavBar />
+  <ToastMessage />
   <router-view v-if="checkSuccess"></router-view>
 
   <!-- 用checkSuccess來切換驗證與否 -->
@@ -41,6 +41,7 @@ export default {
           .post(api)
           .then((res) => {
             this.checkSuccess = true
+            this.$router.push('/admin/products')
           })
           .catch((err) => {
             alert(err.data.message)

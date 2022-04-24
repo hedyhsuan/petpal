@@ -9,7 +9,7 @@
       <div class="row product">
         <div class="product-left col-lg-7 col-md-6">
           <div>
-            <img class="w-100" :src="item.imageUrl" alt="" />
+            <img class="w-100" :src="item.imageUrl" alt="中途之家主圖" />
           </div>
         </div>
         <div class="product-right col-lg-5 col-md-6 pt-4">
@@ -68,7 +68,13 @@
           </div>
 
           <div class="input-group">
-            <button type="button" class="btn down" @click="btnMinus">-</button>
+            <button
+              type="button"
+              class="btn down"
+              @click="btnMinus"
+            >
+              -
+            </button>
             <input
               type="text"
               class="text-center quantity"
@@ -76,13 +82,13 @@
             />
             <button type="button" class="btn up" @click="btnPlus">+</button>
           </div>
-          <div class="addCart" @click.prevent="addtoCart()">加入購物車</div>
+          <button :disabled="disabled===true" type="button" class="addCart" @click="addtoCart()">加入購物車</button>
         </div>
       </div>
 
       <div class="mainIntro col-12">
         <div class="col-12 d-flex justify-content-center paw">
-          <img src="https://imgur.com/v6RZO4g.jpg" alt="" />
+          <img src="https://imgur.com/v6RZO4g.jpg" alt="狗掌印" />
         </div>
         <div class="introText">
           <p>
@@ -101,7 +107,7 @@
           v-for="(pics, index) in item.imagesUrl"
           :key="index"
         >
-          <img :src="pics" alt="" />
+          <img :src="pics" alt="中途之家環境照" />
         </div>
       </div>
     </div>
@@ -114,6 +120,7 @@ export default {
   data () {
     return {
       isLoading: false,
+      disabled: false,
       products: [],
       // 所有後台商品
       shelterName: '',
@@ -195,11 +202,13 @@ export default {
 
     addtoCart () {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`
+      this.disabled = true
       const item = {
         product_id: this.donateItem.id,
         qty: this.donateItem.num
       }
       this.$http.post(url, { data: item }).then((res) => {
+        this.disabled = false
         emitter.emit('get-cart')
         // 更新上方小購物車數字
         // sweet alert
@@ -368,12 +377,14 @@ export default {
   width: 50px;
 }
 .addCart {
-  margin: 10px;
+  border:0px ;
+  width: 100%;
+  margin: 10px auto;
   padding: 10px 0;
   text-align: center;
-  background-color: #fff;
-  color: #000;
-  transition: all 0.2s ease-in;
+  background-color: #bfd7c3;
+  color: #3c6042;
+  transition: all 0.15s ease-in;
   cursor: pointer;
 }
 .addCart:hover {
