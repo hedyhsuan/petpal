@@ -39,7 +39,7 @@
               <div class="checkImg">
                 <img
                   src="https://images.unsplash.com/photo-1554830072-52d78d0d4c18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZG9nJTIwdGhhbmtzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                  alt=""
+                  alt="狗狗感謝您"
                 />
               </div>
             </div>
@@ -48,7 +48,7 @@
               <h6>訂購人資料</h6>
               <Form ref="form" v-slot="{ errors }" @submit="createOrder">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label"><small class="text-danger ">**</small>Email</label>
                   <Field
                     id="email"
                     name="email"
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="name" class="form-label">訂購人姓名</label>
+                  <label for="name" class="form-label"><small class="text-danger ">**</small>訂購人姓名</label>
                   <Field
                     id="name"
                     name="姓名"
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="tel" class="form-label">訂購人電話</label>
+                  <label for="tel" class="form-label"><small class="text-danger ">**</small>訂購人電話</label>
                   <Field
                     id="tel"
                     name="電話"
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="address" class="form-label">訂購人地址</label>
+                  <label for="address" class="form-label"><small class="text-danger ">**</small>訂購人地址</label>
                   <Field
                     id="address"
                     name="地址"
