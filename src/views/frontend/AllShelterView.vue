@@ -3,16 +3,36 @@
     <loading :active="isLoading" />
     <div class="container">
       <div class="btn_group" data-aos="fade-down" data-aos-duration="1500">
-        <button type="button" class="button-38" role="button" @click="area = ''">
+        <button
+          type="button"
+          class="button-38"
+          role="button"
+          @click="area = ''"
+        >
           全部愛園
         </button>
-        <button type="button" class="button-38" role="button" @click="area = '北部'">
+        <button
+          type="button"
+          class="button-38"
+          role="button"
+          @click="area = '北部'"
+        >
           北部
         </button>
-        <button type="button" class="button-38" role="button" @click="area = '中部'">
+        <button
+          type="button"
+          class="button-38"
+          role="button"
+          @click="area = '中部'"
+        >
           中部
         </button>
-        <button type="button" class="button-38" role="button" @click="area = '南部'">
+        <button
+          type="button"
+          class="button-38"
+          role="button"
+          @click="area = '南部'"
+        >
           南部
         </button>
       </div>
@@ -28,11 +48,13 @@
             :key="shelter.id"
           >
             <div class="shelter_card">
-              <div class="topinfo">
-                <div class="left">
-                  <span class="d-block mb-3 mx-3">{{ shelter.category }}</span>
+              <div
+                class="topinfo d-flex justify-content-center align-items-end"
+              >
+                <!-- <div class="left">
+                  <span class="d-block">{{ shelter.category }}</span>
                 </div>
-                <div class="right"></div>
+                <div class="right"></div> -->
               </div>
               <div class="product_cover">
                 <a
@@ -40,8 +62,16 @@
                   class="imglink"
                   @click.prevent="goShelter(shelter.category)"
                 >
-                  <img :src="shelter.imageUrl" class="img-fluid" alt="" />
+                  <img
+                    :src="shelter.imageUrl"
+                    class="img-fluid"
+                    alt="中途之家主圖"
+                  />
+                                  <div class="shelter_name">
+                  <div>{{ shelter.category }}</div>
+                </div>
                 </a>
+
               </div>
             </div>
           </div>
@@ -60,7 +90,8 @@ export default {
       isLoading: false,
       products: [],
       selterIntro: [],
-      area: ''
+      area: '',
+      hearted: JSON.parse(localStorage.getItem('hearted')) || []
     }
   },
   methods: {
@@ -142,25 +173,65 @@ export default {
 .button-38:focus-visible {
   box-shadow: none;
 }
+
 .shelter_card {
   height: 90%;
+  position: relative;
 }
+
+/* .topinfo {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 120px;
+  border-radius: 100px 100px 0 0;
+  z-index: 10;
+  background-color: #bfd7c3;
+  color: #3c6042;
+} */
+
 .product_cover {
   position: relative;
   box-shadow: 0 15px 10px -15px rgb(0 0 0 / 30%);
-  height: 100%;
+  /* height: 100%; */
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  transition: 0.2s ease-in-out;
+}
+.product_cover:hover{
+  transform: translateY(-2%);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.06);
 }
 .product_item {
-  /* margin:0 10px 60px 10px; */
   margin-bottom: 60px;
   padding: 0 20px;
 }
-.imglink img {
-  opacity: 0.8;
+.img-fluid {
+  opacity: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border: 1 solid #ddd;
-  border-radius: 10px;
+}
+.shelter_name {
+  padding: 10px 10px;
+}
+
+.addFav {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #849387;
+  border-radius: 50%;
+  background-color: #eaedea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+  color: rgb(189, 189, 189);
+  cursor: pointer;
+  z-index: 10;
 }
 </style>
