@@ -61,7 +61,7 @@
             </div>
             <img
               class="inner_mainImg"
-              src="https://imgur.com/TxR2XpW.jpg"
+              src="https://imgur.com/SgHLimi.gif"
               alt="狗狗圖片"
             />
           </div>

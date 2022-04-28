@@ -114,6 +114,7 @@
                       type="text"
                       class="form-control"
                       placeholder="請輸入名稱"
+                      required="required"
                     />
                   </div>
                   <div class="mb-3 col-md-6 row">
@@ -156,6 +157,7 @@
                       type="text"
                       class="form-control"
                       placeholder="請輸入品項"
+                      required="required"
                     />
                   </div>
 
@@ -168,6 +170,7 @@
                         type="text"
                         class="form-control"
                         placeholder="請輸入單位"
+                        required="required"
                       />
                     </div>
 
@@ -181,6 +184,7 @@
                         type="text"
                         class="form-control"
                         placeholder="需求數量"
+                        required="required"
                       />
                     </div>
                   </div>
@@ -196,6 +200,7 @@
                         type="number"
                         class="form-control"
                         placeholder="請輸入原價"
+                        required="required"
                       />
                     </div>
                     <div class="mb-3 col-md-6">
@@ -207,6 +212,7 @@
                         min="0"
                         class="form-control"
                         placeholder="請輸入售價"
+                        required="required"
                       />
                     </div>
                   </div>
