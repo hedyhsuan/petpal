@@ -50,28 +50,25 @@
             <div class="shelter_card">
               <div
                 class="topinfo d-flex justify-content-center align-items-end"
-              >
-                <!-- <div class="left">
-                  <span class="d-block">{{ shelter.category }}</span>
-                </div>
-                <div class="right"></div> -->
-              </div>
+              ></div>
               <div class="product_cover">
                 <a
                   href="#"
                   class="imglink"
                   @click.prevent="goShelter(shelter.category)"
                 >
-                  <img
-                    :src="shelter.imageUrl"
-                    class="img-fluid"
-                    alt="中途之家主圖"
-                  />
-                                  <div class="shelter_name">
+                  <div class="img-bg">
+                    <div class="img-text">進去看看</div>
+                    <img
+                      :src="shelter.imageUrl"
+                      class="img-fluid"
+                      alt="中途之家主圖"
+                    />
+                  </div>
+                </a>
+                <div class="shelter_name">
                   <div>{{ shelter.category }}</div>
                 </div>
-                </a>
-
               </div>
             </div>
           </div>
@@ -179,17 +176,6 @@ export default {
   position: relative;
 }
 
-/* .topinfo {
-  position: absolute;
-  bottom: 0;
-  height: 60px;
-  width: 120px;
-  border-radius: 100px 100px 0 0;
-  z-index: 10;
-  background-color: #bfd7c3;
-  color: #3c6042;
-} */
-
 .product_cover {
   position: relative;
   box-shadow: 0 15px 10px -15px rgb(0 0 0 / 30%);
@@ -199,10 +185,35 @@ export default {
   border: 1px solid #ddd;
   transition: 0.2s ease-in-out;
 }
-.product_cover:hover{
+
+.img-bg {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: relative;
+}
+.img-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #5d8964;
+  color: #fff;
+  padding: 10px;
+  display: none;
+  z-index: 10;
+}
+.product_cover:hover {
   transform: translateY(-2%);
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.06);
 }
+.product_cover:hover .img-fluid {
+  opacity: 0.7;
+}
+.product_cover:hover .img-text {
+  display: block;
+}
+
 .product_item {
   margin-bottom: 60px;
   padding: 0 20px;

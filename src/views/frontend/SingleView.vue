@@ -12,7 +12,7 @@
             <img class="w-100" :src="item.imageUrl" alt="中途之家主圖" />
           </div>
         </div>
-        <div class="product-right col-lg-5 col-md-6 pt-4">
+        <div class="product-right col-lg-5 col-md-6">
           <div class="d-flex justify-content-between mx-2">
             <h5>{{ item.category }}</h5>
             <div class="addFav" @click="switchHeart(item)">
@@ -48,7 +48,7 @@
                     </div>
                     <div style="font-size: 0.75rem">
                       需求數量<span class="mx-2">{{ item.requiredQty }}</span
-                      >包
+                      >{{ item.unit }}
                     </div>
                   </div>
                 </div>
@@ -68,13 +68,7 @@
           </div>
 
           <div class="input-group">
-            <button
-              type="button"
-              class="btn down"
-              @click="btnMinus"
-            >
-              -
-            </button>
+            <button type="button" class="btn down" @click="btnMinus">-</button>
             <input
               type="text"
               class="text-center quantity"
@@ -82,7 +76,14 @@
             />
             <button type="button" class="btn up" @click="btnPlus">+</button>
           </div>
-          <button :disabled="disabled===true" type="button" class="addCart" @click="addtoCart()">加入購物車</button>
+          <button
+            :disabled="disabled === true"
+            type="button"
+            class="addCart"
+            @click="addtoCart()"
+          >
+            加入購物車
+          </button>
         </div>
       </div>
 
@@ -134,6 +135,7 @@ export default {
         num: '1'
       },
       activeName: '罐罐',
+      sortArea: [],
       index: '',
       orders: []
       // 所有訂單
@@ -164,6 +166,15 @@ export default {
             vm.introProduct.push(item)
           }
         })
+        // 把同區域的愛園資料
+        vm.sortArea = vm.products.filter((item) => {
+          if (item.introFile === 1 && item.area === vm.donateItem.area) {
+            // 撈出有介紹資料且同區的
+            return item.id !== vm.donateItem.id
+            // 將本頁的商品過濾掉
+          }
+        })
+        console.log(vm.sortArea)
       })
     },
     // 點擊確認要下單的品項
@@ -248,12 +259,17 @@ export default {
 
 <style scoped>
 .product-right {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
+  padding: 10px 20px;
 }
 @media (max-width: 767px) {
   .product-right {
     margin-top: 30px;
   }
+}
+.product-left {
+  padding: 10px;
+  /* border-bottom: 2px solid #3c6042; */
 }
 
 .product-wrap {
@@ -377,7 +393,7 @@ export default {
   width: 50px;
 }
 .addCart {
-  border:0px ;
+  border: 0px;
   width: 100%;
   margin: 10px auto;
   padding: 10px 0;
@@ -429,7 +445,8 @@ export default {
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .active {
   background-color: #5d8964;

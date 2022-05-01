@@ -84,7 +84,7 @@
                 data-aos-duration="1500"
                 data-aos-once="true"
               >
-                petpal在做什麼？
+                PetPal在做什麼？
               </h4>
             </div>
 
